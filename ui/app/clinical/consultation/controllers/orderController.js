@@ -7,7 +7,11 @@ angular.module('bahmni.clinical')
             $scope.consultation.childOrders = $scope.consultation.childOrders || [];
             $scope.allOrdersTemplates = allOrderables;
             var RadiologyOrderOptionsConfig = appService.getAppDescriptor().getConfig("enableRadiologyOrderOptions");
+            var LabOrderOptionsConfig = appService.getAppDescriptor().getConfig("enableLabOrderOptions");
+            var AddVisitTypeToComment = appService.getAppDescriptor().getConfig("addVisitTypeToComment");
             $scope.enableRadiologyOrderOptions = RadiologyOrderOptionsConfig ? RadiologyOrderOptionsConfig.value : null;
+            $scope.labOrderOptionsConfig = LabOrderOptionsConfig ? LabOrderOptionsConfig.value : null;
+            $scope.addVisitTypeToComment = AddVisitTypeToComment ? AddVisitTypeToComment.value : null;
 
             var testConceptToParentsMapping = {}; // A child concept could be part of multiple parent panels
 
@@ -161,6 +165,9 @@ angular.module('bahmni.clinical')
 
             $scope.toggleOrderSelection = function (test) {
                 $scope.resetSearchString();
+                if ($scope.addVisitTypeToComment) {
+                    test.comment = $scope.activeVisit.visitType.display;
+                }
                 var orderPresent = $scope.isActiveOrderPresent(test);
                 if (!orderPresent) {
                     createOrder(test);
@@ -198,6 +205,7 @@ angular.module('bahmni.clinical')
             $scope.openNotesPopup = function (order) {
                 order.previousNote = order.commentToFulfiller;
                 $scope.orderNoteText = order.previousNote;
+               // $scope.orderNoteText = $scope.activeVisit.visitType.display;
                 $scope.dialog = ngDialog.open({ template: 'consultation/views/orderNotes.html', className: 'selectedOrderNoteContainer-dialog ngdialog-theme-default', data: order, scope: $scope
                 });
             };
@@ -217,6 +225,23 @@ angular.module('bahmni.clinical')
                 } else if (($scope.orderNoteText || '').indexOf(printNotes) == -1) {
                     $scope.orderNoteText = $translate.instant(printNotes) + ($scope.orderNoteText || '');
                 }
+            };
+
+            $scope.appendPriorityNotes = function (order) {
+                var priorityNotes = $translate.instant("CLINICAL_ORDER_PRIORITY_PRINT_NOTES");
+                if (($scope.orderNoteText || '').indexOf(priorityNotes) == -1) {
+                    $scope.orderNoteText = ($scope.orderNoteText || '') + $translate.instant(priorityNotes);
+                } else {
+                    $scope.orderNoteText = ($scope.orderNoteText || '').replace(priorityNotes, "");
+                }
+            };
+
+            $scope.isNotesDisabled = function (order) {
+                return (order.uuid || $scope.addVisitTypeToComment);
+            };
+
+            $scope.isPriorityShow = function (isOrderSaved) {
+                return $scope.labOrderOptionsConfig && !isOrderSaved;
             };
 
             $scope.isPrintShown = function (isOrderSaved) {

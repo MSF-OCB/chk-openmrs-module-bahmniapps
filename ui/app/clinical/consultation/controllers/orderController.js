@@ -236,6 +236,11 @@ angular.module('bahmni.clinical')
                 }
             };
 
+            $scope.isOrderActive = function (order) {
+                var priorityNotes = $translate.instant("CLINICAL_ORDER_PRIORITY_PRINT_NOTES");
+                return !(($scope.orderNoteText || '').indexOf(priorityNotes) == -1);
+            };
+
             $scope.isNotesDisabled = function (order) {
                 return (order.uuid || $scope.addVisitTypeToComment);
             };

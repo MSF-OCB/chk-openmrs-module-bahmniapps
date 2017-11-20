@@ -31,7 +31,6 @@
   "DASHBOARD_TAB_GENERAL_KEY": "général",
   "DASHBOARD_TAB_TRENDS_KEY": "tendances",
   "DASHBOARD_TAB_DISCHARGE_SUMMARY_KEY": "Résumé de décharge",
-  "NO_DIAGNOSIS_MESSAGE":"Aucun diagnostic pour ce patient",
   "VISIT_ON_TRANSLATION_KEY":"Visite sur",
   "NO_ACTIVE_PASSIVE_PROGRAMS_MESSAGE":"Pas de programmes actifs / passées pour ce patient .",
   "NO_DIAGNOSIS_MESSAGE":"Aucun diagnostic pour ce patient",
@@ -47,6 +46,7 @@
   "PATIENT_DASHBOARD_KEY":"Tableau de bord des patients",
   "DISCHARGE_SUMMARY_PAGE_KEY":"Décharge page Sommaire",
   "PROGRAM_MANAGEMENT_PAGE_KEY":"Programme des pages de gestion",
+  "DOB_LABEL": "Date de naissance",
   "CONSULTATION_PAGE_KEY":"Consultation",
 
   "CONSULTATION_TAB_KEY":"Consultation",

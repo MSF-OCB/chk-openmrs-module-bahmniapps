@@ -8,6 +8,7 @@
     "CLINICAL_DAYS_TRANSLATION_KEY": "days",
     "CONCEPT_SET_GROUP_EXPAND_ALL_KEY":"Expand All",
     "CONCEPT_SET_GROUP_COLLAPSE_ALL_KEY":"Collapse All",
+    "DOB_LABEL": "Date of Birth",
 
     "NO_DISPOSTIONS_AVAILABLE_MESSAGE_KEY": "No dispositions available.",
     "ALL_DIAGNOSES_KEY": "All Diagnoses",

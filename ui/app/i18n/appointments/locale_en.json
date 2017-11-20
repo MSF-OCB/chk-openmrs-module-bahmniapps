@@ -7,6 +7,7 @@
   "CALENDAR_VIEW": "Calendar",
   "LIST_VIEW": "List view",
   "NO_PROVIDER_COLUMN_KEY": "[No Provider]",
+  "DOB_LABEL": "Date of Birth",
   "SERVICES": "Services",
   "APPOINTMENT_SERVICE_SAVE": "Save",
   "APPOINTMENT_SERVICE_ADD_NEW": "Add New Service",

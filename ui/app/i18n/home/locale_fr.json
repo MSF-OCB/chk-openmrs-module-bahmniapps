@@ -18,5 +18,6 @@
   "MODULE_LABEL_REPORTS_KEY": "rapports",
   "MODULE_LABEL_ORDERS_KEY": "ordres",
   "MODULE_LABEL_PROGRAMS_KEY": "programmes",
-  "LOGIN_LABEL_LOGIN_ERROR_MESSAGE_KEY": "L'authentification a échoué. Veuillez réessayer."
+  "LOGIN_LABEL_LOGIN_ERROR_MESSAGE_KEY": "L'authentification a échoué. Veuillez réessayer.",
+  "REQUIRED_FIELD": "Veuillez remplir ce champ"
 }

@@ -94,7 +94,7 @@ angular
                 states.push(toState);
                 return states;
             };
-
+            moment.locale(window.localStorage["NG_TRANSLATE_LANG_KEY"] || "en");
             var loginLocationUuid = $bahmniCookieStore.get(Bahmni.Common.Constants.locationCookieName).uuid;
             locationService.getVisitLocation(loginLocationUuid).then(function (response) {
                 if (response.data) {

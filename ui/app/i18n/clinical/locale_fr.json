@@ -85,6 +85,11 @@
   "PROGRAM_MANAGEMENT_GENERAL_CONSULTATION_KEY":"Consultation générale",
 
   "OBS_BOOLEAN_YES_KEY":"Oui",
-  "OBS_BOOLEAN_NO_KEY":"Non"
+  "OBS_BOOLEAN_NO_KEY":"Non",
+  "ALL_LAB_RESULTS_LABEL": "Tous les résultats de laboratoire",
+  "ACCESSION_AT_LABEL": "Adhésion à",
+  "SAMPLE_AT_LABEL": "Échantillon à",
+  "DIAGNOSIS_INITIAL_STAGE_LABEL": "Initiale",
+  "DIAGNOSIS_CURRENT_STAGE_LABEL": "Actuel"
 
 }

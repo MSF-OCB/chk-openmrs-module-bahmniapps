@@ -84,5 +84,6 @@
     "NO_LOCATION_TAGGED_TO_VISIT_LOCATION": "Aucun emplacement marqué à Visit Location trouvé",
     "REGISTRATION_FORM_ERRORS_MESSAGE_KEY": "Entrez une valeur dans les champs obligatoires ou corrigez la valeur dans les champs en surbrillance pour continuer",
     "OBS_BOOLEAN_YES_KEY": "Oui",
-    "OBS_BOOLEAN_NO_KEY": "Non"
+    "OBS_BOOLEAN_NO_KEY": "Non",
+    "REQUIRED_FIELD": "Veuillez remplir ce champ"
 }

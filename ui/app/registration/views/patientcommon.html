@@ -30,12 +30,14 @@
                          my-autocomplete source="getAutoCompleteList" response-map="getDataResults"
                          data-item-type="personName"
                          placeholder="{{ ::'REGISTRATION_LABEL_PATIENT_FIRSTNAME' | translate}}"
-                         title="{{::'REGISTRATION_LABEL_PATIENT_ENTER_NAME' | translate}}">
+                         title="{{::'REGISTRATION_LABEL_PATIENT_ENTER_NAME' | translate}}"
+                         validate-on="patient.givenName" validation-message="{{ ::'REQUIRED_FIELD' | translate}}">
 
                   <input data-ng-switch-default
                          type="text" id="givenName" ng-model="patient.givenName" non-blank pattern-validate
                          placeholder="{{ ::'REGISTRATION_LABEL_PATIENT_FIRSTNAME' | translate}}"
-                         title="{{::'REGISTRATION_LABEL_PATIENT_ENTER_NAME' | translate}}">
+                         title="{{::'REGISTRATION_LABEL_PATIENT_ENTER_NAME' | translate}}"
+                         validate-on="patient.givenName" validation-message="{{ ::'REQUIRED_FIELD' | translate}}">
               </span>
 
               <span data-ng-switch="::isAutoComplete('givenName')"
@@ -45,12 +47,15 @@
                          my-autocomplete source="getAutoCompleteList" response-map="getDataResults"
                          data-item-type="personName"
                          placeholder="{{ ::'REGISTRATION_LABEL_PATIENT_FIRSTNAME' | translate}}"
-                         title="{{::'REGISTRATION_LABEL_PATIENT_ENTER_NAME' | translate}}" focus-me="true">
+                         title="{{::'REGISTRATION_LABEL_PATIENT_ENTER_NAME' | translate}}" focus-me="true"
+                         validate-on="patient.givenName" validation-message="{{ ::'REQUIRED_FIELD' | translate}}">
 
                   <input data-ng-switch-default
                          type="text" id="givenName" ng-model="patient.givenName" non-blank pattern-validate
                          placeholder="{{ ::'REGISTRATION_LABEL_PATIENT_FIRSTNAME' | translate}}"
-                         title="{{::'REGISTRATION_LABEL_PATIENT_ENTER_NAME' | translate}}" focus-me="true">
+                         title="{{::'REGISTRATION_LABEL_PATIENT_ENTER_NAME' | translate}}" focus-me="true"
+                         validate-on="patient.givenName" validation-message="{{ ::'REQUIRED_FIELD' | translate}}">
+
               </span>
 
               <span ng-show="::showMiddleName" data-ng-switch="::isAutoComplete('middleName')">
@@ -73,12 +78,14 @@
                          my-autocomplete source="getAutoCompleteList" response-map="getDataResults"
                          data-item-type="personName"
                          placeholder="{{ ::'REGISTRATION_LABEL_PATIENT_LAST_NAME' | translate}}"
-                         title="{{::'REGISTRATION_LABEL_PATIENT_ENTER_LAST_NAME' | translate}}" ng-required="::isLastNameMandatory">
+                         title="{{::'REGISTRATION_LABEL_PATIENT_ENTER_LAST_NAME' | translate}}" ng-required="::isLastNameMandatory"
+                         validate-on="patient.familyName" validation-message="{{ ::'REQUIRED_FIELD' | translate}}">
 
                   <input data-ng-switch-default
                          type="text" id="familyName" ng-model="patient.familyName"  pattern-validate
                          placeholder="{{ ::'REGISTRATION_LABEL_PATIENT_LAST_NAME' | translate}}"
-                         title="{{::'REGISTRATION_LABEL_PATIENT_ENTER_LAST_NAME' | translate}}" ng-required="::isLastNameMandatory">
+                         title="{{::'REGISTRATION_LABEL_PATIENT_ENTER_LAST_NAME' | translate}}" ng-required="::isLastNameMandatory"
+                         validate-on="patient.familyName" validation-message="{{ ::'REQUIRED_FIELD' | translate}}">
               </span>
 
                     <!--<span class="input-label-inline caste-lastname" ng-show="showCasteSameAsLastName()">
@@ -110,7 +117,8 @@
 
                 <div class="field-value">
                     <select id="gender" ng-model="patient.gender" required="required" title="Select Gender"
-                            ng-options="genderMap[genderCode] for genderCode in genderCodes track by genderCode" ng-change="handleUpdate('gender')">
+                            ng-options="genderMap[genderCode] for genderCode in genderCodes track by genderCode" ng-change="handleUpdate('gender')"
+                    validate-on="patient.gender" validation-message="{{ ::'REQUIRED_FIELD' | translate}}">
                         <option value="">{{ ::'REGISTRATION_LABEL_SELECT_GENDER' | translate}}</option>
                     </select>
                     <!--<div class="selectGender">

@@ -90,6 +90,10 @@
   "ACCESSION_AT_LABEL": "Adhésion à",
   "SAMPLE_AT_LABEL": "Échantillon à",
   "DIAGNOSIS_INITIAL_STAGE_LABEL": "Initiale",
-  "DIAGNOSIS_CURRENT_STAGE_LABEL": "Actuel"
+  "DIAGNOSIS_CURRENT_STAGE_LABEL": "Actuel",
+  "CONDITION_LIST_NO_RETRO_MODE": "<strong>Conditions cannot</strong> be edited in retrospective mode",
+  "SEARCH_BY_PATIENT_ID_KEY": "Rechercher Patient par ID",
+  "RECENT_PATIENTS_LABEL": "Patients récents",
+  "OPEN_IN_NEW_WINDOW": "Ouvrir dans une nouvelle fenetre"
 
 }

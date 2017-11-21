@@ -223,5 +223,8 @@
     "CONDITION_LIST_NO_CONDITIONS": "No Conditions available",
     "CONDITION_LIST_NO_RETRO_MODE":"<strong>Conditions cannot</strong> be edited in retrospective mode",
     "DIAGNOSIS_INITIAL_STAGE_LABEL": "Initial",
-    "DIAGNOSIS_CURRENT_STAGE_LABEL": "Current"
+    "DIAGNOSIS_CURRENT_STAGE_LABEL": "Current",
+    "SEARCH_BY_PATIENT_ID_KEY": "Search Patient by ID",
+    "RECENT_PATIENTS_LABEL": "Recent Patients",
+    "OPEN_IN_NEW_WINDOW": "Open in new window"
 }

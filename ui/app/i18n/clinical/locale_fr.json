@@ -73,7 +73,7 @@
   "DISCHARGE_SUMMARY_AT_ADMISSION_KEY": "à l'admission",
   "DISCHARGE_SUMMARY_LAST_RECORDED_WEIGHT_KEY":"Dernière poids enregistré",
   "DISCHARGE_SUMMARY_TREATMENTS_KEY": "traitements",
-
+  "ON_BEHALF_OF_TRANSLATION_KEY": "De la part de",
   "PROGRAM_MANAGEMENT_SELECT_PROGRAM_KEY":"Choisir un programme",
   "PROGRAM_MANAGEMENT_CHOOSE_PROGRAM_KEY":"choisir le programme",
   "PROGRAM_MANAGEMENT_START_DATE_KEY":"Date de début",

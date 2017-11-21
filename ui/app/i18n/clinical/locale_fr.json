@@ -95,6 +95,11 @@
   "SEARCH_BY_PATIENT_ID_KEY": "Rechercher Patient par ID",
   "RECENT_PATIENTS_LABEL": "Patients récents",
   "OPEN_IN_NEW_WINDOW": "Ouvrir dans une nouvelle fenetre",
-  "NO_RESULTS_FOUND": "Aucun résultat trouvé"
+  "NO_RESULTS_FOUND": "Aucun résultat trouvé",
+  "CONTROL_PANEL_ACTIONS": "Actes",
+  "CONTROL_PANEL_OTHER_ACTIONS": "D'autres Actions",
+  "CONSULTATION_LABEL_TEXT": "Consultation",
+  "CONTROL_PANEL_CONSULTATION_TEXT": "Consultation",
+  "CONTROL_PANEL_DASHBOARD_TEXT": "Tableau de bord"
 
 }

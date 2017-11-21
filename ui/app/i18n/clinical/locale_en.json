@@ -227,5 +227,9 @@
     "SEARCH_BY_PATIENT_ID_KEY": "Search Patient by ID",
     "RECENT_PATIENTS_LABEL": "Recent Patients",
     "OPEN_IN_NEW_WINDOW": "Open in new window",
-    "NO_RESULTS_FOUND": "No results found"
+    "NO_RESULTS_FOUND": "No results found",
+    "CONTROL_PANEL_ACTIONS": "Actions",
+    "CONTROL_PANEL_OTHER_ACTIONS": "Other Actions",
+    "CONTROL_PANEL_CONSULTATION_TEXT": "Consultation",
+    "CONTROL_PANEL_DASHBOARD_TEXT": "Dashboard"
 }

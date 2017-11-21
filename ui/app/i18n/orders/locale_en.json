@@ -8,5 +8,6 @@
     "MESSAGE_DIALOG_OPTION_COPY" : "Copy Error",
     "MESSAGE_DIALOG_OPTION_OKAY": "OK",
     "ORDERS_FORM_ERRORS_MESSAGE_KEY": "Please enter a value in the mandatory fields or correct the value in the highlighted fields to proceed",
-    "DOB_LABEL": "Date of Birth"
+    "DOB_LABEL": "Date of Birth",
+    "NO_RESULTS_FOUND": "No results found"
 }

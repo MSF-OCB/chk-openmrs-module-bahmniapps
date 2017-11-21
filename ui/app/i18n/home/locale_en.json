@@ -49,5 +49,6 @@
     "LOGIN_PAGE_TITLE_TEXT": "TITLE TEXT",
     "LOGIN_UNSUPPORTED_BROWSER_KEY" : "Bahmni is supported on Chrome Browser",
     "REQUIRED_FIELD": "Please fill out this field",
-    "DOB_LABEL": "Date of Birth"
+    "DOB_LABEL": "Date of Birth",
+    "NO_RESULTS_FOUND": "No results found"
 }

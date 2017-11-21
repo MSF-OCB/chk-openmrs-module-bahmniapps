@@ -94,6 +94,7 @@
   "CONDITION_LIST_NO_RETRO_MODE": "<strong>Conditions cannot</strong> be edited in retrospective mode",
   "SEARCH_BY_PATIENT_ID_KEY": "Rechercher Patient par ID",
   "RECENT_PATIENTS_LABEL": "Patients récents",
-  "OPEN_IN_NEW_WINDOW": "Ouvrir dans une nouvelle fenetre"
+  "OPEN_IN_NEW_WINDOW": "Ouvrir dans une nouvelle fenetre",
+  "NO_RESULTS_FOUND": "Aucun résultat trouvé"
 
 }

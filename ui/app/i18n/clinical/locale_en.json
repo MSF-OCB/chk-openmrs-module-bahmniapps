@@ -226,5 +226,6 @@
     "DIAGNOSIS_CURRENT_STAGE_LABEL": "Current",
     "SEARCH_BY_PATIENT_ID_KEY": "Search Patient by ID",
     "RECENT_PATIENTS_LABEL": "Recent Patients",
-    "OPEN_IN_NEW_WINDOW": "Open in new window"
+    "OPEN_IN_NEW_WINDOW": "Open in new window",
+    "NO_RESULTS_FOUND": "No results found"
 }

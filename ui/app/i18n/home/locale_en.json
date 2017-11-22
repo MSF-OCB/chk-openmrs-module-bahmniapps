@@ -50,5 +50,7 @@
     "LOGIN_UNSUPPORTED_BROWSER_KEY" : "Bahmni is supported on Chrome Browser",
     "REQUIRED_FIELD": "Please fill out this field",
     "DOB_LABEL": "Date of Birth",
-    "NO_RESULTS_FOUND": "No results found"
+    "NO_RESULTS_FOUND": "No results found",
+    "PRIVILEGE_REQUIRED": "User is logged in but doesn't have the relevant privilege",
+    "NO_FULFILMENT_MESSAGE": "No observations captured for this order."
 }

@@ -3,5 +3,7 @@
     "MESSAGE_DIALOG_OPTION_COPY" : "Copy Error",
     "MESSAGE_DIALOG_OPTION_OKAY": "OK",
     "DOB_LABEL": "Date of Birth",
-    "NO_RESULTS_FOUND": "No results found"
+    "NO_RESULTS_FOUND": "No results found",
+    "PRIVILEGE_REQUIRED": "User is logged in but doesn't have the relevant privilege",
+    "NO_FULFILMENT_MESSAGE": "No observations captured for this order."
 }

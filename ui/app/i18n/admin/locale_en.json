@@ -6,5 +6,6 @@
     "selectLocation": "Select Location",
     "clinical_key": "Clinical",
     "MESSAGE_DIALOG_OPTION_COPY" : "Copy Error",
-    "MESSAGE_DIALOG_OPTION_OKAY": "OK"
+    "MESSAGE_DIALOG_OPTION_OKAY": "OK",
+    "PRIVILEGE_REQUIRED": "User is logged in but doesn't have the relevant privilege"
 }

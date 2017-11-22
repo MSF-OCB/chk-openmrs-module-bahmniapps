@@ -33,5 +33,7 @@
     "CONDITION_LIST_CREATED_BY": "by",
     "CONDITION_LIST_ACTIVE_SINCE": "condition from",
     "CONDITION_LIST_NO_CONDITIONS": "No Conditions available",
-    "NO_RESULTS_FOUND": "No results found"
+    "NO_RESULTS_FOUND": "No results found",
+    "PRIVILEGE_REQUIRED": "User is logged in but doesn't have the relevant privilege",
+    "NO_FULFILMENT_MESSAGE": "No observations captured for this order."
 }

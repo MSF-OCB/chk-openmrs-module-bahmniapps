@@ -77,5 +77,7 @@
   "REGISTRATION_RELATIONSHIPS_ACCESS_KEY": "l",
   "REGISTRATION_BACK_ACCESS_KEY" : "b",
   "REGISTRATION_START_VISIT": "commencer la visite {{ visitType }}",
-  "REQUIRED_FIELD": "Veuillez remplir ce champ"
+  "REQUIRED_FIELD": "Veuillez remplir ce champ",
+  "PRIVILEGE_REQUIRED": "L'utilisateur est connecté mais n'a pas le privilège pertinent",
+  "NO_FULFILMENT_MESSAGE": "Aucune observation capturée pour cette commande."
 }

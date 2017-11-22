@@ -19,5 +19,7 @@
   "MODULE_LABEL_ORDERS_KEY": "ordres",
   "MODULE_LABEL_PROGRAMS_KEY": "programmes",
   "LOGIN_LABEL_LOGIN_ERROR_MESSAGE_KEY": "L'authentification a échoué. Veuillez réessayer.",
-  "REQUIRED_FIELD": "Veuillez remplir ce champ"
+  "REQUIRED_FIELD": "Veuillez remplir ce champ",
+  "PRIVILEGE_REQUIRED": "L'utilisateur est connecté mais n'a pas le privilège pertinent",
+  "NO_FULFILMENT_MESSAGE": "Aucune observation capturée pour cette commande."
 }

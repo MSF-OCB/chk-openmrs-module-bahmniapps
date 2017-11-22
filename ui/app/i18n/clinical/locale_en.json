@@ -231,5 +231,7 @@
     "CONTROL_PANEL_ACTIONS": "Actions",
     "CONTROL_PANEL_OTHER_ACTIONS": "Other Actions",
     "CONTROL_PANEL_CONSULTATION_TEXT": "Consultation",
-    "CONTROL_PANEL_DASHBOARD_TEXT": "Dashboard"
+    "CONTROL_PANEL_DASHBOARD_TEXT": "Dashboard",
+    "PRIVILEGE_REQUIRED": "User is logged in but doesn't have the relevant privilege",
+    "NO_FULFILMENT_MESSAGE": "No observations captured for this order."
 }

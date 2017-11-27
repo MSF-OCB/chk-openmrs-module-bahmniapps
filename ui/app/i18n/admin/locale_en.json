@@ -15,5 +15,6 @@
     "PATIENT_ID_FILTER_LABEL": "Patient ID",
     "ENTER_PATIENT_ID_PLACEHOLDER": "Enter Patient ID",
     "FILTER_BUTTON_LABEL": "Filter",
-    "AUDIT_LOG_TABLE_HEADER_LABEL": "Audit Log Events"
+    "AUDIT_LOG_TABLE_HEADER_LABEL": "Audit Log Events",
+    "NO_NAVIGATION_LINKS_AVAILABLE_MESSAGE": "No navigation links available."
 }

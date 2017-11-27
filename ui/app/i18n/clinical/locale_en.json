@@ -233,5 +233,12 @@
     "CONTROL_PANEL_CONSULTATION_TEXT": "Consultation",
     "CONTROL_PANEL_DASHBOARD_TEXT": "Dashboard",
     "PRIVILEGE_REQUIRED": "User is logged in but doesn't have the relevant privilege",
-    "NO_FULFILMENT_MESSAGE": "No observations captured for this order."
+    "NO_FULFILMENT_MESSAGE": "No observations captured for this order.",
+    "DISCONTINUING_AND_ORDERING_SAME_DRUG_NOT_ALLOWED": "Discontinuing and ordering the same drug is not allowed. Instead, use edit",
+    "INCOMPLETE_FORM_ERROR_MESSAGE": "Please click on Add or Clear to continue",
+    "CONCEPT_NOT_NUMERIC": "Concept ':conceptName''s datatype is not Numeric. At :placeErrorAccurred.",
+    "NO_OBSERVATIONS_CAPTURED": "No observations captured for this visit.",
+    "NO_NAVIGATION_LINKS_AVAILABLE_MESSAGE": "No navigation links available.",
+    "NO_LAB_ORDERS_MESSAGE": "No lab orders.",
+    "NO_ACTIVE_VISIT_MESSAGE": "No active visit."
 }

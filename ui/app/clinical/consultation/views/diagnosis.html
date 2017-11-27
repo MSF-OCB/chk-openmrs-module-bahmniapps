@@ -93,8 +93,8 @@
                               Past Diagnosis
                           </span>
                         </div>
-                        <div class="col col2"><span>Initial</span></div>
-                        <div class="col col3"><span>Current</span></div>
+                        <div class="col col2"><span>{{'DIAGNOSIS_INITIAL_STAGE_LABEL'|translate}}</span></div>
+                        <div class="col col3"><span>{{'DIAGNOSIS_CURRENT_STAGE_LABEL'|translate}}</span></div>
                     </div>
                     <div ng-show="toggles.expandPastDiagnoses"
                          ng-repeat="diagnosis in consultation.pastDiagnoses | primaryDiagnosisFirst"

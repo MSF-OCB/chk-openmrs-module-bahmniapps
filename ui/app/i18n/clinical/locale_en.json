@@ -240,5 +240,16 @@
     "NO_OBSERVATIONS_CAPTURED": "No observations captured for this visit.",
     "NO_NAVIGATION_LINKS_AVAILABLE_MESSAGE": "No navigation links available.",
     "NO_LAB_ORDERS_MESSAGE": "No lab orders.",
-    "NO_ACTIVE_VISIT_MESSAGE": "No active visit."
+    "NO_ACTIVE_VISIT_MESSAGE": "No active visit.",
+    "NO_RECENT_TREATMENTS": "No Recent Treatments",
+    "STOPPED_ON": "Stopped on",
+    "STARTED_ON": "Started on",
+    "DUE_TO": "due to",
+    "NO_PRESCRIPTION_SAVED_PLACEHOLDER": "No prescriptions saved yet",
+    "TREATMENT_NOTES": "Treatment Notes",
+    "TREATMENT_CLEAR_BUTTON_LABEL": "Clear",
+    "TREATMENT_ADD_BUTTON_LABEL": "<u>A</u>dd",
+    "TREATMENT_START_DATE_LABEL" : "Start Date",
+    "MEDICATION_DOSAGE_INFORMATION_LABEL": "Dosage Instructions",
+    "TREATMENT_SL_NO": "S. No."
 }

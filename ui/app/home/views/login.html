@@ -61,8 +61,7 @@
                 </div>
                 <div class="field-value">
                     <select id="location" ng-model="loginInfo.currentLocation"
-                            ng-options="item as (item.display | translate) for item in locations | orderBy:'display'"
-                            validate-on="loginInfo.currentLocation"  validation-message="{{ ::'REQUIRED_FIELD' | translate}}" title="{{ ::'REQUIRED_FIELD' | translate}}" required>
+                            ng-options="item as (item.display | translate) for item in locations | orderBy:'display'" required>
                         <option value="">{{'LOGIN_LABEL_SELECT_LOCATION_KEY' | translate}}</option>
                     </select>
                 </div>

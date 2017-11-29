@@ -91,5 +91,6 @@
     "REGISTRATION_START_VISIT": "commencer la visite {{ visitType }}",
     "REQUIRED_FIELD": "Veuillez remplir ce champ",
     "PRIVILEGE_REQUIRED": "L'utilisateur est connecté mais n'a pas le privilège pertinent",
-    "NO_FULFILMENT_MESSAGE": "Aucune observation capturée pour cette commande."
+    "NO_FULFILMENT_MESSAGE": "Aucune observation capturée pour cette commande.",
+    "SELECT_VALUE_FROM_AUTOCOMPLETE": "Veuillez sélectionner une valeur de auto complète"
 }

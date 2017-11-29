@@ -33,5 +33,6 @@
     "PRIVILEGE_REQUIRED": "User is logged in but doesn't have the relevant privilege",
     "NO_FULFILMENT_MESSAGE": "No observations captured for this order.",
     "NO_NAVIGATION_LINKS_AVAILABLE_MESSAGE": "No navigation links available.",
-    "CHOOSE_REPORT_FORMAT": "Choose Format"
+    "CHOOSE_REPORT_FORMAT": "Choose Format",
+    "SELECT_VALUE_FROM_AUTOCOMPLETE": "Please select a value from auto complete"
 }

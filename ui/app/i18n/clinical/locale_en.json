@@ -269,5 +269,5 @@
     "MEDICATION_START_DATE_LABEL" : "Start Date",
     "MEDICATION_DOSAGE_INFORMATION_LABEL": "Dosage Instructions",
     "TREATMENT_SL_NO": "S. No.",
-    "SELECT_VALUE_FROM_AUTOCOMPLETE": "Please select a value from auto complete"
+    "SELECT_VALUE_FROM_AUTOCOMPLETE_DEFAULT_MESSAGE": "Please select a value from auto complete"
 }

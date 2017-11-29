@@ -9,7 +9,7 @@ angular.module('bahmni.common.uiHelper')
         var onEdit = scope.onEdit && scope.onEdit();
         var minLength = scope.minLength || 2;
         var formElement = element[0];
-        var validationMessage = scope.validationMessage || $translate.instant("SELECT_VALUE_FROM_AUTOCOMPLETE");
+        var validationMessage = scope.validationMessage || $translate.instant("SELECT_VALUE_FROM_AUTOCOMPLETE_DEFAULT_MESSAGE");
 
         var validateIfNeeded = function (value) {
             if (!scope.strictSelect) {

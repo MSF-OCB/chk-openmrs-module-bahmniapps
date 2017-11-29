@@ -268,5 +268,6 @@
     "MEDICATION_ADD_BUTTON_LABEL": "<u>A</u>dd",
     "MEDICATION_START_DATE_LABEL" : "Start Date",
     "MEDICATION_DOSAGE_INFORMATION_LABEL": "Dosage Instructions",
-    "TREATMENT_SL_NO": "S. No."
+    "TREATMENT_SL_NO": "S. No.",
+    "SELECT_VALUE_FROM_AUTOCOMPLETE": "Please select a value from auto complete"
 }

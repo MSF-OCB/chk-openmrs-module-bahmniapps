@@ -1,4 +1,4 @@
-<p ng-hide="hasTests()">There are no tests. Please setup tests</p>
+<p ng-hide="hasTests()">{{ 'INVESTIGATION_NO_TEST_PRESENT_MESSAGE'|translate }}</p>
 <section class="first" ng-show="hasTests()">
 	<section>
 		<header>{{filterHeader}}</header>

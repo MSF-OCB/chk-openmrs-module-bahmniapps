@@ -123,8 +123,8 @@
 
             <div class="table history-diagnosis" ng-show="editedDiagnosesFromPastEncounters.length > 0">
                 <div class="row table-header">
-                    <div class="col col1"><span class="table-head-title">Past</span></div>
-                    <div class="col col2"><span class="table-head-title">Status</span></div>
+                    <div class="col col1"><span class="table-head-title">{{ 'CONSULTATION_TAB_PAST_DIAGNOSES_LABEL'|translate }}</span></div>
+                    <div class="col col2"><span class="table-head-title">{{ 'CONSULTATION_TAB_DIAGNOSES_STATUS_LABEL'|translate }}</span></div>
                     <div class="col col3"><span class="table-head-title"></span></div>
                     <div class="col col4"><span class="table-head-title">{{ 'CONSULTATION_TAB_REVISED_DIAGNOSES_LABEL'|translate }}</span></div>
                     <div class="col col5"><span class="table-head-title"></span></div>
@@ -236,7 +236,7 @@
                 </li>
             </ul>
             <div ng-show="consultation.labOrderNote.value" class="notes">
-                <h5 class="title">{{ 'CONSULTATION_TAB_INVESTIGATION_NOTES_LABEL'|translate }}:</h5>
+                <h5 class="title">{{ 'NOTES_LABEL'|translate }}:</h5>
 
                 <p class="content">{{consultation.labOrderNote.value}}</p>
             </div>
@@ -247,7 +247,7 @@
             <ul class="block-content">
                 <li>
                     <div class="expander-row row-click">
-                        <span class="disposition-state">{{consultation.disposition.conceptName}} <span ng-if="consultation.disposition.dispositionDateTime">on</span> {{consultation.disposition.dispositionDateTime | bahmniDateTime }}</span>
+                        <span class="disposition-state">{{consultation.disposition.conceptName}} <span ng-if="consultation.disposition.dispositionDateTime">{{ 'CONSULTATION_ON_KEY'|translate }}</span> {{consultation.disposition.dispositionDateTime | bahmniDateTime }}</span>
                         <button class="toggle fr" ng-class="{'has-notes': consultation.disposition.additionalObs[0].value}" toggle="disposition.show">
                             <i class="fa fa-plus-circle"></i>
                             <i class="fa fa-minus-circle"></i>
@@ -271,7 +271,7 @@
     <section class="block consultation-notes section-grid">
         <h2 class="section-title">{{ 'CONSULTATION_TAB_CONSULTATION_NOTES_LABEL'|translate }}</h2>
         <textarea ng-model="consultation.consultationNote.value" ng-change="onNoteChanged()"
-                  placeholder="Enter Notes here " rows="6" msd-elastic></textarea>
+                  placeholder="{{ 'CLINICAL_ENTER_NOTES_PLACEHOLDER'|translate }} " rows="6" msd-elastic></textarea>
     </section>
 
 </article>

@@ -269,5 +269,9 @@
     "MEDICATION_START_DATE_LABEL" : "Start Date",
     "MEDICATION_DOSAGE_INFORMATION_LABEL": "Dosage Instructions",
     "TREATMENT_SL_NO": "S. No.",
-    "SELECT_VALUE_FROM_AUTOCOMPLETE_DEFAULT_MESSAGE": "Please select a value from auto complete"
+    "SELECT_VALUE_FROM_AUTOCOMPLETE_DEFAULT_MESSAGE": "Please select a value from auto complete",
+    "RETROSPECTIVE_POPUP_LOCATION_LABEL": "Location",
+    "RETROSPECTIVE_POPUP_ON_BEHALF_LABEL": "Enter on behalf",
+    "RETROSPECTIVE_POPUP_DATA_FOR_LABEL": "Enter data for",
+    "OKAY_LABEL": "OK"
 }

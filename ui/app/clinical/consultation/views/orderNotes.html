@@ -1,5 +1,5 @@
 <div class="selectedOrderNoteContainer">
-    <span>{{ 'ENTER_ORDER_NOTE_LABEL' }} - {{ngDialogData.concept.displayName || ngDialogData.concept.shortName || ngDialogData.concept.name}}</span>
+    <span>{{ 'ENTER_ORDER_NOTE_LABEL' | translate }} - {{ngDialogData.concept.displayName || ngDialogData.concept.shortName || ngDialogData.concept.name}}</span>
 
     <textarea ng-model="$parent.orderNoteText" focus-on="true" rows="4" ng-disabled="isNotesDisabled(ngDialogData)">{{ngDialogData.previousNote}}</textarea>
     <button ng-click="appendPrintNotes(ngDialogData)" class="fl btn-group" ng-show="isPrintShown(ngDialogData.uuid)">{{ 'CLINICAL_ORDER_RADIOLOGY_NEED_PRINT_BUTTON' | translate}}</button>

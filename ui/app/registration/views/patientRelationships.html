@@ -9,10 +9,6 @@
                     <span ng-if="isPatientRelationship(relationship)"><a ng-click="openPatientDashboardInNewTab(relationship)"><i class="fa fa-external-link"></i></a></span>
                 </div>
                 <div class="col col3">
-                    <strong class="till-text">{{ ::'REGISTRATION_LABEL_TILL' | translate}}</strong>
-                    <span>{{relationship.endDate | bahmniDate}}</span>
-                </div>
-                <div class="col col4">
                     <button type="button" class="small-btn row-remover" ng-confirm-click="removeRelationship(relationship)" id="relationRemoveBtn">
                         <span class="fa fa-remove"></span>
                     </button>
@@ -63,21 +59,12 @@
                     <span class="no-person" ng-show="showPersonNotFound(newRelationship)">{{ ::'REGISTRATION_LABEL_PERSON_NOT_FOUND' | translate}}</span>
                     <span ng-show="!showPersonNotFound(newRelationship)">{{newRelationship.content}}</span>
                 </div>
-                <div class="col col3 form-field">
-                    <strong class="till-text">{{ ::'REGISTRATION_LABEL_TILL' | translate}}</strong>
-                    <div class="field-attribute showOn-small-screen">
-                        <label>Till Date</label>
-                    </div>
-                    <div class="field-value">
-                        <input type="date" ng-model="newRelationship.endDate" ng-disabled="!newRelationship.relationshipType.uuid"/>
-                    </div>
-                </div>
-                <div class="col col4">
+                <div class="col col3">
                     <button type="button" class="small-btn row-remover" ng-if="!isEmpty(newRelationship)" ng-click="removeRelationship(newRelationship, $index)">
                         <span class="fa fa-remove"></span>
                     </button>
                 </div>
             </div>
         </div>
-    
+
 </div>

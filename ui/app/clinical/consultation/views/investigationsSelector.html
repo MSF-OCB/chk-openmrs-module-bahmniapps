@@ -28,7 +28,7 @@
 </section>
 <section class="last" ng-show="hasTests()">
 	<section ng-show="filteredPanels.length">
-		<header>Panels</header>
+		<header>{{ 'ORDERS_PANELS_HEADER_LABEL'|translate }}</header>
 		<ul class="panels" >
 			<li ng-repeat="panel in filteredPanels | orderBy:'name'" ng-click="panel.toggle()" ng-class="{selected: panel.isSelected()}">
 				<span class="fa fa-ok"></span>

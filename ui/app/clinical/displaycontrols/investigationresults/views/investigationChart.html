@@ -13,10 +13,10 @@
                     <th>&nbsp;</th>
                     <td class="normal" ng-repeat="testOrderLabel in accessions.getTestOrderLabels()">
                         <span bo-text="testOrderLabel.testName"></span>
-                                <span ng-show="accessions.hasRange(testOrderLabel)" class="range">
+                        <span bo-text="testOrderLabel.testUnitOfMeasurement" class="range" ng-hide="{{testOrderLabel.testUnitOfMeasurement== null}}"></span>
+                        <span ng-show="accessions.hasRange(testOrderLabel)" class="range">
                                     <span bo-text="'(' + testOrderLabel.minNormal + ' - ' + testOrderLabel.maxNormal + ')'"></span>
-                                    <span bo-text="testOrderLabel.testUnitOfMeasurement"></span>
-                                </span>
+                        </span>
                     </td>
                 </tr>
                 </thead>
@@ -66,9 +66,9 @@
                 <tr ng-repeat="testOrderLabel in accessions.getTestOrderLabels()">
                     <th>
                         <span bo-text="testOrderLabel.testName"></span>
+                        <span bo-text="testOrderLabel.testUnitOfMeasurement" class="range"></span>
                         <span ng-show="accessions.hasRange(testOrderLabel)" class="range">
                             <span bo-text="'(' + testOrderLabel.minNormal + ' - ' + testOrderLabel.maxNormal + ')'"></span>
-                            <span bo-text="testOrderLabel.testUnitOfMeasurement"></span>
                         </span>
                     </th>
                     <td ng-repeat="dateLabel in accessions.getDateLabels()"

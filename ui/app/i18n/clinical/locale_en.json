@@ -327,5 +327,6 @@
     "PROGRAM_DELETE_REASON_PLACEHOLDER": "Reason to delete the program",
     "DELETE_LABEL": "Delete",
     "EDIT_LABEL": "Edit",
-    "ORDERS_PANELS_HEADER_LABEL": "Panels"
+    "INVESTIGATIONS_PANELS_HEADER_LABEL": "Panels",
+    "INVESTIGATIONS_SELECTIONS_HEADER_LABEL": "Selection"
 }

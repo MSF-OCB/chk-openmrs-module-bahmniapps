@@ -331,7 +331,6 @@ describe('PatientRelationshipController', function () {
     describe("clearRelationshipRow", function(){
         it("should clear the relationship data", function () {
             var patientRelationship = {
-                patientIdentifier: "Doctor",
                 patientIdentifier: "nameOrId",
                 relationshipType: {"uuid": "8d91a01c-c2cc-11de-8d13-0010c6dffd0f"},
                 personB: {"uuid": "uuid"},
@@ -416,8 +415,7 @@ describe('PatientRelationshipController', function () {
                personB: {uuid: 'personB-uuid'}
            };
 
-           scope.onEdit(patientRelationship);
-
+           scope.onEdit(patientRelationship)();
            expect(patientRelationship.personB).toBeFalsy();
        })
     });

@@ -195,7 +195,9 @@ angular.module('bahmni.registration')
             };
 
             $scope.onEdit = function (relationship) {
-                delete relationship.personB;
+                return function () {
+                    delete relationship.personB;
+                };
             };
 
             $scope.clearRelationshipRow = function (relationship, index) {

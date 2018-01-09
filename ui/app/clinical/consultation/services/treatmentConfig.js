@@ -7,9 +7,9 @@ angular.module('bahmni.clinical').factory('treatmentConfig',
                 return treatmentService.getConfig().then(function (result) {
                     var config = angular.extend(baseTreatmentConfig, result.data);
                     config.durationUnits = [
-                        {name: "Day(s)", factor: 1},
-                        {name: "Week(s)", factor: 7},
-                        {name: "Month(s)", factor: 30}
+                        {name: $translate.instant("CLINICAL_DURATION_UNIT_DAYS"), factor: 1},
+                        {name: $translate.instant("CLINICAL_DURATION_UNIT_WEEKS"), factor: 7},
+                        {name: $translate.instant("CLINICAL_DURATION_UNIT_MONTHS"), factor: 30}
                     ];
                     config.frequencies = _(config.frequencies)
                         .reverse()

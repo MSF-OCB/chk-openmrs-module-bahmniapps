@@ -70,6 +70,9 @@ describe('treatmentConfig', function () {
                 }
             }));
             translate = jasmine.createSpyObj('$translate', ['instant']);
+            translate.instant.and.callFake(function (value) {
+                return value;
+            });
 
             $provide.value('treatmentService', treatmentService);
             $provide.value('configurationService', configurationService);
@@ -103,9 +106,9 @@ describe('treatmentConfig', function () {
         injectTreatmentConfig("tbTab");
         treatmentConfig.then(function (data) {
             expect(data.durationUnits).toEqual([
-                {name: "Day(s)", factor: 1},
-                {name: "Week(s)", factor: 7},
-                {name: "Month(s)", factor: 30}
+                {name: "CLINICAL_DURATION_UNIT_DAYS", factor: 1},
+                {name: "CLINICAL_DURATION_UNIT_WEEKS", factor: 7},
+                {name: "CLINICAL_DURATION_UNIT_MONTHS", factor: 30}
             ]);
         }).catch(notifyError).finally(done);
     });

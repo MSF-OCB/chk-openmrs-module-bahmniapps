@@ -39,7 +39,7 @@ Bahmni.Clinical.TabularLabOrderResults = (function () {
                     date.date = moment(date.date, "DD-MMM-YYYY").toDate();
                 }
                 return date;
-            });
+            }).reverse();
         };
 
         this.getTestOrderLabels = function () {

@@ -1,6 +1,6 @@
 'use strict';
 
-describe("DispositionController", function () {
+describe("DispositionController", '$translate',function ($translate) {
 
     var scope, rootScope ,controller, retrospectiveEntry, retrospectiveEntryService, dispositionService, dispositionActions;
 
@@ -8,10 +8,9 @@ describe("DispositionController", function () {
 
     beforeEach(module(function($provide){
         dispositionActions = [
-            {"name": {"name": "Admit Patient"}, "mappings": [{"display": "org.openmrs.module.emrapi: ADMIT"}]},
-            {"name": {"name": "Undo Discharge"}, "mappings": [{"display": "org.openmrs.module.emrapi: UNDO_DISCHARGE"}]},
-            {"name": {"name": "Discharge Patient"}, "mappings": [{"display": "org.openmrs.module.emrapi: DISCHARGE"}]},
-            {"name": {"name": "Transfer Patient"}, "mappings": [{"display": "org.openmrs.module.emrapi: TRANSFER"}]}];
+            {"name": {"name": $translate.instant("ADT_IPD_PATIENT_ADMIT_KEY")}, "mappings": [{"display": "org.openmrs.module.emrapi: ADMIT"}]},
+            {"name": {"name": $translate.instant("ADT_IPD_PATIENT_UNDO_DISCHARGE_KEY")}, "mappings": [{"display": "org.openmrs.module.emrapi: UNDO_DISCHARGE"}]},
+            {"name": {"name": $translate.instant("ADT_IPD_PATIENT_DISCHARGE_KEY")}, "mappings": [{"display": "org.openmrs.module.emrapi: DISCHARGE"}]},
         dispositionService = jasmine.createSpyObj('dispositionService',['getDispositionNoteConcept', 'getDispositionActions']);
         dispositionService.getDispositionNoteConcept.and.returnValue(specUtil.simplePromise({data: {results: [{uuid: "uuid"}]}}));
         dispositionService.getDispositionActions.and.returnValue(specUtil.simplePromise({data: {results: [{answers: dispositionActions}]}}));
@@ -78,7 +77,7 @@ describe("DispositionController", function () {
 
     it("should show disposition action as admit patient", function () {
         scope.$parent.visitSummary = null;
-        expect(scope.dispositionActions).toEqual([{"name": "Admit Patient", "code": "ADMIT"}]);
+        expect(scope.dispositionActions).toEqual([{"name": $translate.instant("ADT_IPD_PATIENT_ADMIT_KEY"), "code": "ADMIT"}]);
     });
 
     it("should show disposition action as admit patient if he is discharged", function () {
@@ -86,7 +85,7 @@ describe("DispositionController", function () {
             return true;
         }};
         initController();
-        expect(scope.dispositionActions).toEqual([{"name": "Undo Discharge", "code": "UNDO_DISCHARGE"}]);
+        expect(scope.dispositionActions).toEqual([{"name": $translate.instant("ADT_IPD_PATIENT_UNDO_DISCHARGE_KEY"), "code": "UNDO_DISCHARGE"}]);
     });
 
     it("should show disposition actions as transfer patient and transfer patient if he is admitted", function () {
@@ -96,7 +95,7 @@ describe("DispositionController", function () {
             return true;
         }};
         initController();
-        expect(scope.dispositionActions).toEqual([{"name": "Transfer Patient", "code": "TRANSFER"},{"name": "Discharge Patient", "code": "DISCHARGE"}]);
+        expect(scope.dispositionActions).toEqual([{"name": $translate.instant("ADT_IPD_PATIENT_DISCHARGE_KEY"), "code": "DISCHARGE"}]);
     });
 
     it("should display configured disposition actions irrespective of admission status", function () {

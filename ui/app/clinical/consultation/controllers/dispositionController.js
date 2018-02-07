@@ -38,7 +38,7 @@ angular.module('bahmni.clinical')
         };
 
         var filterDispositionActions = function (dispositions, visitSummary) {
-            var defaultDispositions = ["ADT_IPD_PATIENT_UNDO_DISCHARGE_KEY", "ADT_IPD_PATIENT_ADMIT_KEY",  "ADT_IPD_PATIENT_DISCHARGE_KEY"];
+            var defaultDispositions = ["ADT_IPD_PATIENT_UNDO_DISCHARGE_KEY", "ADT_IPD_PATIENT_ADMIT_KEY", "ADT_IPD_PATIENT_DISCHARGE_KEY"];
             var finalDispositionActions = [];
             var isVisitOpen = visitSummary ? _.isEmpty(visitSummary.stopDateTime) : false;
 

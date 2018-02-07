@@ -154,7 +154,7 @@ describe("ReportsController", function () {
 
         scope.scheduleReport(report);
 
-        expect(messagingServiceMock.showMessage).toHaveBeenCalledWith("error", "Please select the start date and end date");
+        expect(messagingServiceMock.showMessage).toHaveBeenCalledWith("error", "PLEASE_SELECT_THEREPORTS_START_DATE and REPORTS_STOP_DATE");
         expect(reportServiceMock.scheduleReport).not.toHaveBeenCalled();
     });
 

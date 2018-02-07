@@ -63,5 +63,8 @@
     "BED_LABEL": "Bed",
     "ASSIGN_BED_LABEL": "Assign",
     "TRANSFER_BED_LABEL": "Transfer",
-    "EMPTY_WARD_MESSAGE": "There are no patients in this ward."
+    "EMPTY_WARD_MESSAGE": "There are no patients in this ward.",
+    "ADT_IPD_PATIENT_ADMIT_KEY": "Admit Patient",
+    "ADT_IPD_PATIENT_DISCHARGE_KEY": "Discharge Patient",
+    "ADT_IPD_PATIENT_UNDO_DISCHARGE_KEY" :"Undo Discharge"
 }

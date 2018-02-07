@@ -3,10 +3,10 @@
 angular.module('bahmni.adt')
     .controller('AdtController', ['$scope', '$q', '$rootScope', 'spinner', 'dispositionService',
         'encounterService', 'bedService', 'appService', 'visitService', '$location', '$window', 'sessionService',
-        'messagingService', '$anchorScroll', '$stateParams', 'ngDialog', '$filter', 'auditLogService',
+        'messagingService', '$anchorScroll', '$stateParams', 'ngDialog', '$filter', 'auditLogService', '$translate',
         function ($scope, $q, $rootScope, spinner, dispositionService, encounterService, bedService,
                   appService, visitService, $location, $window, sessionService, messagingService, $anchorScroll,
-                  $stateParams, ngDialog, $filter, auditLogService) {
+                  $stateParams, ngDialog, $filter, auditLogService, $translate) {
             var actionConfigs = {};
             var encounterConfig = $rootScope.encounterConfig;
             var locationUuid = sessionService.getLoginLocationUuid();
@@ -80,11 +80,11 @@ angular.module('bahmni.adt')
                 var stopDate = visitSummary && visitSummary.stopDateTime;
                 var isVisitOpen = (stopDate === null);
                 if (visitSummary && visitSummary.isDischarged() && isVisitOpen) {
-                    return filterAction(actions, ["Undo Discharge"]);
+                    return filterAction(actions, ($translate.instant("ADT_IPD_PATIENT_UNDO_DISCHARGE_KEY")));
                 } else if (visitSummary && visitSummary.isAdmitted() && isVisitOpen) {
-                    return filterAction(actions, ["Transfer Patient", "Discharge Patient"]);
+                    return filterAction(actions, ($translate.instant("ADT_IPD_PATIENT_DISCHARGE_KEY")));
                 } else {
-                    return filterAction(actions, ["Admit Patient"]);
+                    return filterAction(actions, ($translate.instant("ADT_IPD_PATIENT_ADMIT_KEY")));
                 }
             };
 
@@ -127,7 +127,7 @@ angular.module('bahmni.adt')
             });
 
             $scope.getDisplayForContinuingVisit = function () {
-                return "Admit";
+                return "ADT_IPD_PATIENT_ADMIT_BUTTON_KEY";
             };
 
             $scope.getDisplay = function (displayFunction, display) {

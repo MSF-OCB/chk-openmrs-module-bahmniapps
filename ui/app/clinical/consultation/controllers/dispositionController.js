@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bahmni.clinical')
-    .controller('DispositionController', ['$scope', '$q', 'dispositionService', 'retrospectiveEntryService', 'spinner', function ($scope, $q, dispositionService, retrospectiveEntryService, spinner) {
+    .controller('DispositionController', ['$scope', '$q', 'dispositionService', 'retrospectiveEntryService', 'spinner', '$translate', function ($scope, $q, dispositionService, retrospectiveEntryService, spinner, $translate) {
         var consultation = $scope.consultation;
         var allDispositions = [];
 
@@ -38,21 +38,18 @@ angular.module('bahmni.clinical')
         };
 
         var filterDispositionActions = function (dispositions, visitSummary) {
-            var defaultDispositions = ["Undo Discharge", "Admit Patient", "Transfer Patient", "Discharge Patient"];
-            var finalDispositionActions = _.filter(dispositions, function (disposition) {
-                return defaultDispositions.indexOf(disposition.name) < 0;
-            });
+            var defaultDispositions = ["ADT_IPD_PATIENT_UNDO_DISCHARGE_KEY", "ADT_IPD_PATIENT_ADMIT_KEY",  "ADT_IPD_PATIENT_DISCHARGE_KEY"];
+            var finalDispositionActions = [];
             var isVisitOpen = visitSummary ? _.isEmpty(visitSummary.stopDateTime) : false;
 
             if (visitSummary && visitSummary.isDischarged() && isVisitOpen) {
-                finalDispositionActions.push(findAction(dispositions, {name: "Undo Discharge"}));
+                finalDispositionActions.push(findAction(dispositions, {name: $translate.instant("ADT_IPD_PATIENT_UNDO_DISCHARGE_KEY")}));
             }
             else if (visitSummary && visitSummary.isAdmitted() && isVisitOpen) {
-                finalDispositionActions.push(findAction(dispositions, { name: "Transfer Patient"}));
-                finalDispositionActions.push(findAction(dispositions, { name: "Discharge Patient"}));
+                finalDispositionActions.push(findAction(dispositions, { name: $translate.instant("ADT_IPD_PATIENT_DISCHARGE_KEY")}));
             }
             else {
-                finalDispositionActions.push(findAction(dispositions, { name: "Admit Patient"}));
+                finalDispositionActions.push(findAction(dispositions, { name: $translate.instant("ADT_IPD_PATIENT_ADMIT_KEY")}));
             }
             return finalDispositionActions;
         };

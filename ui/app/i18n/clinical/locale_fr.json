@@ -102,6 +102,11 @@
 
     "OBS_BOOLEAN_YES_KEY":"Oui",
     "OBS_BOOLEAN_NO_KEY":"Non",
-    "CONDITION_LIST_NO_RETRO_MODE": "<strong>Conditions cannot</strong> be edited in retrospective mode"
+    "CONDITION_LIST_NO_RETRO_MODE": "<strong>Conditions cannot</strong> be edited in retrospective mode",
+    "IPD_DISCHARGE_PATIENT_KEY": "Laisser sortir le patient",
+    "ADT_IPD_PATIENT_ADMIT_KEY" : "Hospitaliser le patient",
+    "ADT_IPD_PATIENT_DISCHARGE_KEY" :"Laisser sortir le patient",
+    "ADT_IPD_PATIENT_UNDO_DISCHARGE_KEY":"Annuler la sortie",
+    "ADT_IPD_PATIENT_ADMIT_BUTTON_KEY" :"Hospitaliser"
 
 }

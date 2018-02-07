@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bahmni.reports')
-    .controller('ReportsController', ['$scope', 'appService', 'reportService', 'FileUploader', 'messagingService', 'spinner', '$rootScope', 'auditLogService', function ($scope, appService, reportService, FileUploader, messagingService, spinner, $rootScope, auditLogService) {
+    .controller('ReportsController', ['$scope', 'appService', 'reportService', 'FileUploader', 'messagingService', 'spinner', '$rootScope', 'auditLogService', '$translate', function ($scope, appService, reportService, FileUploader, messagingService, spinner, $rootScope, auditLogService, $translate) {
         $scope.uploader = new FileUploader({
             url: Bahmni.Common.Constants.uploadReportTemplateUrl,
             removeAfterUpload: true,
@@ -44,12 +44,12 @@ angular.module('bahmni.reports')
             if (isDateRangeRequiredFor(report) && (!report.startDate || !report.stopDate)) {
                 var msg = [];
                 if (!report.startDate) {
-                    msg.push("start date");
+                    msg.push($translate.instant("REPORTS_START_DATE"));
                 }
                 if (!report.stopDate) {
-                    msg.push("end date");
+                    msg.push($translate.instant("REPORTS_STOP_DATE"));
                 }
-                messagingService.showMessage("error", "Please select the " + msg.join(" and "));
+                messagingService.showMessage("error", $translate.instant("PLEASE_SELECT_THE  ") +  msg.join( " and "));
                 return false;
             }
             if (report.type == 'concatenated' && report.responseType == reportService.getMimeTypeForFormat('CSV')) {

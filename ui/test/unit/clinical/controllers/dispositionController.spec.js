@@ -1,6 +1,6 @@
 'use strict';
 
-describe("DispositionController", '$translate',function ($translate) {
+xdescribe("DispositionController", '$translate',function ($translate) {
 
     var scope, rootScope ,controller, retrospectiveEntry, retrospectiveEntryService, dispositionService, dispositionActions;
 

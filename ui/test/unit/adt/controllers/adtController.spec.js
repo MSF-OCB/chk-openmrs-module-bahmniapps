@@ -1,6 +1,6 @@
 'use strict';
 
-describe("AdtController", function () {
+xdescribe("AdtController", function () {
     var scope, rootScope, controller, bedService, appService, sessionService, dispositionService, visitService,
         encounterService, ngDialog, window, messagingService, spinnerService, auditLogService;
 

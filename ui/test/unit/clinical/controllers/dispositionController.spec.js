@@ -2,7 +2,7 @@
 
 xdescribe("DispositionController", '$translate',function ($translate) {
 
-    var scope, rootScope ,controller, retrospectiveEntry, retrospectiveEntryService, dispositionService, dispositionActions;
+    var scope, rootScope ,controller, retrospectiveEntry, retrospectiveEntryService, dispositionService, dispositionActions, $translate;
 
     beforeEach(module('bahmni.clinical'));
 
@@ -10,7 +10,7 @@ xdescribe("DispositionController", '$translate',function ($translate) {
         dispositionActions = [
             {"name": {"name": $translate.instant("ADT_IPD_PATIENT_ADMIT_KEY")}, "mappings": [{"display": "org.openmrs.module.emrapi: ADMIT"}]},
             {"name": {"name": $translate.instant("ADT_IPD_PATIENT_UNDO_DISCHARGE_KEY")}, "mappings": [{"display": "org.openmrs.module.emrapi: UNDO_DISCHARGE"}]},
-            {"name": {"name": $translate.instant("ADT_IPD_PATIENT_DISCHARGE_KEY")}, "mappings": [{"display": "org.openmrs.module.emrapi: DISCHARGE"}]},
+            {"name": {"name": $translate.instant("ADT_IPD_PATIENT_DISCHARGE_KEY")}, "mappings": [{"display": "org.openmrs.module.emrapi: DISCHARGE"}]}];
         dispositionService = jasmine.createSpyObj('dispositionService',['getDispositionNoteConcept', 'getDispositionActions']);
         dispositionService.getDispositionNoteConcept.and.returnValue(specUtil.simplePromise({data: {results: [{uuid: "uuid"}]}}));
         dispositionService.getDispositionActions.and.returnValue(specUtil.simplePromise({data: {results: [{answers: dispositionActions}]}}));

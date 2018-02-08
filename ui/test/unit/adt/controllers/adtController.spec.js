@@ -2,14 +2,15 @@
 
 xdescribe("AdtController", function () {
     var scope, rootScope, controller, bedService, appService, sessionService, dispositionService, visitService,
-        encounterService, ngDialog, window, messagingService, spinnerService, auditLogService;
+        encounterService, ngDialog, window, messagingService, spinnerService, auditLogService, translate;
 
     beforeEach(function () {
         module('bahmni.adt');
 
-        inject(function ($controller, $rootScope) {
+        inject(function ($controller, $rootScope, $translate) {
             controller = $controller;
             rootScope = $rootScope;
+            translate = $translate;
             scope = $rootScope.$new();
         });
 
@@ -79,7 +80,8 @@ xdescribe("AdtController", function () {
             $window: window,
             messagingService: messagingService,
             spinner: spinnerService,
-            auditLogService: auditLogService
+            auditLogService: auditLogService,
+            $translate: translate
         });
     };
 
@@ -286,10 +288,9 @@ xdescribe("AdtController", function () {
         scope.adtObservations = [];
         var response = {
             "results": [{
-                "answers": [{"name": {"name": "Undo Discharge", "uuid": "c2bc09b3"}},
-                    {"name": {"name": "Admit Patient", "uuid": "avb231rt"}},
-                    {"name": {"name": "Discharge Patient", "uuid": "81cecc80"}},
-                    {"name": {"name": "Transfer Patient", "uuid": "81d1cf4e"}}]
+                "answers": [{"name": {"name": $translate.instant("ADT_IPD_PATIENT_UNDO_DISCHARGE_KEY"), "uuid": "c2bc09b3"}},
+                    {"name": {"name": $translate.instant("ADT_IPD_PATIENT_ADMIT_KEY"), "uuid": "avb231rt"}},
+                    {"name": {"name": $translate.instant("ADT_IPD_PATIENT_DISCHARGE_KEY"), "uuid": "81cecc80"}}]
             }]
         };
         dispositionService.getDispositionActions.and.returnValue(response);
@@ -311,7 +312,7 @@ xdescribe("AdtController", function () {
         encounterService.create.and.callFake(stubOnePromise);
 
         createController();
-        expect(scope.dispositionActions).toEqual([{"name": {"name": "Admit Patient", "uuid": "avb231rt"}}]);
+        expect(scope.dispositionActions).toEqual([{"name": {"name": $translate.instant("ADT_IPD_PATIENT_ADMIT_KEY"), "uuid": "avb231rt"}}]);
     });
 
     it("Should have Undo Discharge action if the patient is discharged and visit is open", function () {
@@ -325,10 +326,9 @@ xdescribe("AdtController", function () {
         scope.adtObservations = [];
         var response = {
             "results": [{
-                "answers": [{"name": {"name": "Undo Discharge", "uuid": "c2bc09b3"}},
-                    {"name": {"name": "Admit Patient", "uuid": "avb231rt"}},
-                    {"name": {"name": "Discharge Patient", "uuid": "81cecc80"}},
-                    {"name": {"name": "Transfer Patient", "uuid": "81d1cf4e"}}]
+                "answers": [{"name": {"name": $translate.instant("ADT_IPD_PATIENT_UNDO_DISCHARGE_KEY"), "uuid": "c2bc09b3"}},
+                    {"name": {"name": $translate.instant("ADT_IPD_PATIENT_ADMIT_KEY"), "uuid": "avb231rt"}},
+                    {"name": {"name": $translate.instant("ADT_IPD_PATIENT_DISCHARGE_KEY"), "uuid": "81cecc80"}}]
             }]
         };
         dispositionService.getDispositionActions.and.returnValue(response);
@@ -344,7 +344,7 @@ xdescribe("AdtController", function () {
 
         createController();
         scope.continueWithCurrentVisit();
-        expect(scope.dispositionActions).toEqual([{"name": {"name": "Undo Discharge", "uuid": "c2bc09b3"}}]);
+        expect(scope.dispositionActions).toEqual([{"name": {"name": $translate.instant("ADT_IPD_PATIENT_UNDO_DISCHARGE_KEY"), "uuid": "c2bc09b3"}}]);
     });
 
     it("Should have Discharge Patient and Transfer Patient action if the patient is admitted", function () {
@@ -358,10 +358,9 @@ xdescribe("AdtController", function () {
         scope.adtObservations = [];
         var response = {
             "results": [{
-                "answers": [{"name": {"name": "Undo Discharge", "uuid": "c2bc09b3"}},
-                    {"name": {"name": "Admit Patient", "uuid": "avb231rt"}},
-                    {"name": {"name": "Discharge Patient", "uuid": "81cecc80"}},
-                    {"name": {"name": "Transfer Patient", "uuid": "81d1cf4e"}}]
+                "answers": [{"name": {"name": $translate.instant("ADT_IPD_PATIENT_UNDO_DISCHARGE_KEY"), "uuid": "c2bc09b3"}},
+                    {"name": {"name": $translate.instant("ADT_IPD_PATIENT_ADMIT_KEY"), "uuid": "avb231rt"}},
+                    {"name": {"name": $translate.instant("ADT_IPD_PATIENT_DISCHARGE_KEY"), "uuid": "81cecc80"}}]
             }]
         };
         dispositionService.getDispositionActions.and.returnValue(response);
@@ -376,8 +375,7 @@ xdescribe("AdtController", function () {
         encounterService.create.and.callFake(stubOnePromise);
 
         createController();
-        expect(scope.dispositionActions).toEqual([{"name": {"name": "Discharge Patient", "uuid": "81cecc80"}},
-            {"name": {"name": "Transfer Patient", "uuid": "81d1cf4e"}}]);
+        expect(scope.dispositionActions).toEqual([{"name": {"name": $translate.instant("ADT_IPD_PATIENT_DISCHARGE_KEY"), "uuid": "81cecc80"}}]);
     });
 
     it("Should have Admit Patient action if the patient is not admitted in given visit", function () {
@@ -388,10 +386,9 @@ xdescribe("AdtController", function () {
         scope.adtObservations = [];
         var response = {
             "results": [{
-                "answers": [{"name": {"name": "Undo Discharge", "uuid": "c2bc09b3"}},
-                    {"name": {"name": "Admit Patient", "uuid": "avb231rt"}},
-                    {"name": {"name": "Discharge Patient", "uuid": "81cecc80"}},
-                    {"name": {"name": "Transfer Patient", "uuid": "81d1cf4e"}}]
+                "answers": [{"name": {"name": $translate.instant("ADT_IPD_PATIENT_UNDO_DISCHARGE_KEY"), "uuid": "c2bc09b3"}},
+                    {"name": {"name": $translate.instant("ADT_IPD_PATIENT_ADMIT_KEY"), "uuid": "avb231rt"}},
+                    {"name": {"name": $translate.instant("ADT_IPD_PATIENT_DISCHARGE_KEY"), "uuid": "81cecc80"}}]
             }]
         };
         dispositionService.getDispositionActions.and.returnValue(response);
@@ -413,7 +410,7 @@ xdescribe("AdtController", function () {
         encounterService.create.and.callFake(stubOnePromise);
 
         createController();
-        expect(scope.dispositionActions).toEqual([{"name": {"name": "Admit Patient", "uuid": "avb231rt"}}]);
+        expect(scope.dispositionActions).toEqual([{"name": {"name": $translate.instant("ADT_IPD_PATIENT_ADMIT_KEY"), "uuid": "avb231rt"}}]);
     });
 
     describe('Discharge', function () {

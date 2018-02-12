@@ -29,7 +29,7 @@ angular.module('bahmni.reports')
 
         var validateReport = function (report) {
             if (!report.responseType) {
-                messagingService.showMessage("error", "Select format for the report: " + report.name);
+                messagingService.showMessage("error", $translate.instant("SELECT_REPORT_FORMAT") + report.name);
                 return false;
             }
             if (report.responseType === 'application/vnd.ms-excel-custom' && !report.reportTemplateLocation) {
@@ -49,7 +49,7 @@ angular.module('bahmni.reports')
                 if (!report.stopDate) {
                     msg.push($translate.instant("REPORTS_STOP_DATE"));
                 }
-                messagingService.showMessage("error", $translate.instant("PLEASE_SELECT_THE ") + msg.join(" and "));
+                messagingService.showMessage("error", $translate.instant("PLEASE_SELECT_THE  ") +  msg.join( " and "));
                 return false;
             }
             if (report.type == 'concatenated' && report.responseType == reportService.getMimeTypeForFormat('CSV')) {

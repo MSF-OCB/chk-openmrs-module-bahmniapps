@@ -154,7 +154,7 @@ describe("ReportsController", function () {
 
         scope.scheduleReport(report);
 
-        expect(messagingServiceMock.showMessage).toHaveBeenCalledWith("error", "Please select the start date and end date");
+        expect(messagingServiceMock.showMessage).toHaveBeenCalledWith("error", "PLEASE_SELECT_THEREPORTS_START_DATE and REPORTS_STOP_DATE");
         expect(reportServiceMock.scheduleReport).not.toHaveBeenCalled();
     });
 
@@ -170,7 +170,7 @@ describe("ReportsController", function () {
 
         scope.scheduleReport(report);
 
-        expect(messagingServiceMock.showMessage).toHaveBeenCalledWith("error", "Please select the start date");
+        expect(messagingServiceMock.showMessage).toHaveBeenCalledWith("error", "PLEASE_SELECT_THEREPORTS_START_DATE");
         expect(reportServiceMock.scheduleReport).not.toHaveBeenCalled();
     });
 
@@ -186,7 +186,7 @@ describe("ReportsController", function () {
 
         scope.scheduleReport(report);
 
-        expect(messagingServiceMock.showMessage).toHaveBeenCalledWith("error", "Please select the end date");
+        expect(messagingServiceMock.showMessage).toHaveBeenCalledWith("error", "PLEASE_SELECT_THEREPORTS_STOP_DATE");
         expect(reportServiceMock.scheduleReport).not.toHaveBeenCalled();
     });
 
@@ -201,7 +201,7 @@ describe("ReportsController", function () {
 
         scope.scheduleReport(report);
 
-        expect(messagingServiceMock.showMessage).toHaveBeenCalledWith("error", "Select format for the report: Vitals");
+        expect(messagingServiceMock.showMessage).toHaveBeenCalledWith("error", "SELECT_REPORT_FORMATVitals");
         expect(reportServiceMock.scheduleReport).not.toHaveBeenCalled();
     });
 

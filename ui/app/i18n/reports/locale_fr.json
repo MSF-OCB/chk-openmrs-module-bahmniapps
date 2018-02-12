@@ -28,5 +28,9 @@
     "REPORT_ERROR": "Erreur",
     "REPORT_DELETE": "Effacer",
     "REPORTS_HEADER_REPORTS": "Rapports",
-    "REPORTS_HEADER_MY_REPORTS": "Mes rapports"
+    "REPORTS_HEADER_MY_REPORTS": "Mes rapports",
+    "REPORTS_START_DATE" : "date de début",
+    "REPORTS_STOP_DATE" : "la date de fin",
+    "PLEASE_SELECT_THE" : "Veuillez sélectionner la  ",
+    "SELECT_REPORT_FORMAT" : "sélectionnez le format du rappor "
 }

@@ -201,7 +201,7 @@ describe("ReportsController", function () {
 
         scope.scheduleReport(report);
 
-        expect(messagingServiceMock.showMessage).toHaveBeenCalledWith("error", "Select format for the report: Vitals");
+        expect(messagingServiceMock.showMessage).toHaveBeenCalledWith("error", "SELECT_REPORT_FORMATVitals");
         expect(reportServiceMock.scheduleReport).not.toHaveBeenCalled();
     });
 

@@ -49,7 +49,7 @@ angular.module('bahmni.reports')
                 if (!report.stopDate) {
                     msg.push($translate.instant("REPORTS_STOP_DATE"));
                 }
-                messagingService.showMessage("error", $translate.instant("PLEASE_SELECT_THE  ") + msg.join("  "));
+                messagingService.showMessage("error", $translate.instant("PLEASE_SELECT_THE  ") + msg.join($translate.instant("AND_KEY")));
                 return false;
             }
             if (report.type == 'concatenated' && report.responseType == reportService.getMimeTypeForFormat('CSV')) {

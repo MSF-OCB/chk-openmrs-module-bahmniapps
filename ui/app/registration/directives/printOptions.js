@@ -19,8 +19,32 @@ angular.module('bahmni.registration')
                     $scope.observations.forEach(getValue);
                     return obs;
                 };
+                var constructRelationships = function(){
+                var relationships = [];
+                    var relationshipTypes = $scope.relationshipTypes;
+                     _.each($scope.patient.relationships, function(relationship){
+                    var rel = {};
+                        var relationshipType = _.find(relationshipTypes, {uuid: relationship.relationshipType.uuid});
+                          if (!relationship.personA) {
+                                return ;
+                                            }
+                                            if (relationship.personA.uuid === $scope.patient.uuid) {
+                                                  rel =  { "person" : relationship.personB.display, "relationshipType" :relationshipType.aIsToB };
 
+                                                            } else {
+                                                               rel =  { "person" : relationship.personA.display, "relationshipType" :relationshipType.bIsToA };
+                                                            }
+
+                                                            relationships.push(rel);
+
+
+                    });
+
+return relationships;
+
+                }
                 $scope.print = function (option) {
+                    $scope.patient.relationshipsToPrint =  constructRelationships();
                     return registrationCardPrinter.print(option.templateUrl, $scope.patient, mapRegistrationObservations(), $scope.encounterDateTime);
                 };
 

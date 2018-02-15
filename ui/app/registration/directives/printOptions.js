@@ -37,7 +37,7 @@ angular.module('bahmni.registration')
                     });
 
                     return relationships;
-                }
+                };
                 $scope.print = function (option) {
                     $scope.patient.relationshipsToPrint = constructRelationships();
                     return registrationCardPrinter.print(option.templateUrl, $scope.patient, mapRegistrationObservations(), $scope.encounterDateTime);

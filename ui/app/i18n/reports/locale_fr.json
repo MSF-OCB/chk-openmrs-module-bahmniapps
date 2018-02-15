@@ -32,6 +32,6 @@
     "REPORTS_START_DATE" : "date de début ",
     "REPORTS_STOP_DATE" : "date de fin",
     "PLEASE_SELECT_THE" : "Veuillez sélectionner la  ",
-    "SELECT_REPORT_FORMAT" : "sélectionnez le format du rapport ",
+    "SELECT_REPORT_FORMAT" : "Sélectionnez le format du rapport: ",
     "AND_KEY" : " et la "
 }

@@ -3,9 +3,9 @@
 angular.module('bahmni.appointments')
     .controller('AppointmentsCreateController', ['$scope', '$q', '$window', '$state', '$translate', 'spinner', 'patientService',
         'appointmentsService', 'appointmentsServiceService', 'messagingService',
-        'ngDialog', 'appService', '$stateParams', 'appointmentCreateConfig', 'appointmentContext',
+        'ngDialog', 'appService', '$stateParams', 'appointmentCreateConfig', 'appointmentContext', '$http', 'sessionService',
         function ($scope, $q, $window, $state, $translate, spinner, patientService, appointmentsService, appointmentsServiceService,
-                  messagingService, ngDialog, appService, $stateParams, appointmentCreateConfig, appointmentContext) {
+                  messagingService, ngDialog, appService, $stateParams, appointmentCreateConfig, appointmentContext, $http, sessionService) {
             $scope.isFilterOpen = $stateParams.isFilterOpen;
             $scope.showConfirmationPopUp = true;
             $scope.enableSpecialities = appService.getAppDescriptor().getConfigValue('enableSpecialities');
@@ -18,6 +18,9 @@ angular.module('bahmni.appointments')
             $scope.enableEditService = appService.getAppDescriptor().getConfigValue('isServiceOnAppointmentEditable');
             $scope.showStartTimes = [];
             $scope.showEndTimes = [];
+            var patientSearchURL = appService.getAppDescriptor().getConfigValue('patientSearchUrl');
+            var loginLocationUuid = sessionService.getLoginLocationUuid();
+            $scope.minCharLengthToTriggerPatientSearch = appService.getAppDescriptor().getConfigValue('minCharLengthToTriggerPatientSearch') || 3;
 
             var init = function () {
                 wireAutocompleteEvents();
@@ -53,7 +56,15 @@ angular.module('bahmni.appointments')
             };
 
             $scope.search = function () {
-                return spinner.forPromise(patientService.search($scope.appointment.patient.label).then(function (response) {
+                var formattedUrl;
+                if (patientSearchURL && !_.isEmpty(patientSearchURL)) {
+                    var params = {
+                        'loginLocationUuid': loginLocationUuid,
+                        'searchValue': $scope.appointment.patient.label
+                    };
+                    formattedUrl = appService.getAppDescriptor().formatUrl(patientSearchURL, params);
+                }
+                return (spinner.forPromise(formattedUrl ? $http.get(Bahmni.Common.Constants.RESTWS_V1 + formattedUrl) : patientService.search($scope.appointment.patient.label)).then(function (response) {
                     return response.data.pageOfResults;
                 }));
             };
@@ -401,16 +412,28 @@ angular.module('bahmni.appointments')
                 }
             );
 
-            var checkForConflict = function (bookedAppointment, appointment) {
-                var startDateTime = moment(bookedAppointment.startDateTime),
-                    endDateTime = moment(bookedAppointment.endDateTime);
-                var appointmentStartDateTime = moment(appointment.startDateTime),
-                    appointmentEndDateTime = moment(appointment.endDateTime);
-                var isOnSameDay = startDateTime.diff(appointmentStartDateTime, 'days') === 0;
-                var isAppointmentTimingConflicted = ((startDateTime > appointmentStartDateTime && startDateTime < appointmentEndDateTime) ||
-                    (appointmentStartDateTime > startDateTime && appointmentStartDateTime < endDateTime));
-                return bookedAppointment.uuid !== appointment.uuid &&
-                    bookedAppointment.status !== 'Cancelled' &&
+            var newAppointmentStartingEndingBeforeExistingAppointment = function (existingStart, newStart, newEnd) {
+                return newEnd <= existingStart;
+            };
+
+            var newAppointmentStartingEndingAfterExistingAppointment = function (newStart, existingStart, existingEnd) {
+                return newStart >= existingEnd;
+            };
+
+            var isNewAppointmentConflictingWithExistingAppointment = function (existingAppointment, newAppointment) {
+                var existingStart = moment(existingAppointment.startDateTime),
+                    existingEnd = moment(existingAppointment.endDateTime);
+                var newStart = moment(newAppointment.startDateTime),
+                    newEnd = moment(newAppointment.endDateTime);
+                return !(newAppointmentStartingEndingBeforeExistingAppointment(existingStart, newStart, newEnd) ||
+                    newAppointmentStartingEndingAfterExistingAppointment(newStart, existingStart, existingEnd));
+            };
+
+            var checkForConflict = function (existingAppointment, newAppointment) {
+                var isOnSameDay = moment(existingAppointment.startDateTime).diff(moment(newAppointment.startDateTime), 'days') === 0;
+                var isAppointmentTimingConflicted = isNewAppointmentConflictingWithExistingAppointment(existingAppointment, newAppointment);
+                return existingAppointment.uuid !== newAppointment.uuid &&
+                    existingAppointment.status !== 'Cancelled' &&
                     isOnSameDay && isAppointmentTimingConflicted;
             };
 

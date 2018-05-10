@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bahmni.clinical')
-    .controller('OrderController', ['$scope', 'allOrderables', 'ngDialog', 'retrospectiveEntryService', 'appService', '$translate',
-        function ($scope, allOrderables, ngDialog, retrospectiveEntryService, appService, $translate) {
+    .controller('OrderController', ['$scope', 'allOrderables', 'ngDialog', 'retrospectiveEntryService', 'appService', '$translate', 'orderNotesService',
+        function ($scope, allOrderables, ngDialog, retrospectiveEntryService, appService, $translate, orderNotesService) {
             $scope.consultation.orders = $scope.consultation.orders || [];
             $scope.consultation.childOrders = $scope.consultation.childOrders || [];
             $scope.allOrdersTemplates = allOrderables;
@@ -14,6 +14,7 @@ angular.module('bahmni.clinical')
             $scope.labOrderOptionsConfig = LabOrderOptionsConfig ? LabOrderOptionsConfig.value : null;
             $scope.addVisitTypeToComment = AddVisitTypeToComment ? AddVisitTypeToComment.value : null;
             var testConceptToParentsMapping = {}; // A child concept could be part of multiple parent panels
+            $scope.reasons = [];
 
             var collapseExistingActiveSection = function (section) {
                 if (section) {
@@ -208,8 +209,17 @@ angular.module('bahmni.clinical')
             $scope.openNotesPopup = function (order) {
                 order.previousNote = order.commentToFulfiller;
                 $scope.orderNoteText = order.previousNote;
-               // $scope.orderNoteText = $scope.activeVisit.visitType.display;
-                $scope.dialog = ngDialog.open({ template: 'consultation/views/orderNotes.html', className: 'selectedOrderNoteContainer-dialog ngdialog-theme-default', data: order, scope: $scope
+                // $scope.orderNoteText = $scope.activeVisit.visitType.display;
+                orderNotesService.getReasonsToSelectConceptSet().then(function (name) {
+                    orderNotesService.getReasonConcepts(name).then(function (result) {
+                        $scope.reasons = [];
+                        var results = result.data.results;
+                        var concepts = results.length > 0 ? results[0].answers : [];
+                        concepts.sort().forEach(function (concept) {
+                            $scope.reasons.push(concept.name.name);
+                        });
+                        $scope.dialog = ngDialog.open({ template: 'consultation/views/orderNotes.html', className: 'selectedOrderNoteContainer-dialog ngdialog-theme-default', data: order, scope: $scope});
+                    });
                 });
             };
 

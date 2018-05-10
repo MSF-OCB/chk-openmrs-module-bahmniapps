@@ -2,7 +2,7 @@
 
 describe("OrderController", function () {
 
-    var scope, rootScope, ngDialog, appDescriptor;
+    var scope, rootScope, ngDialog, appDescriptor, orderNotesService;
 
     beforeEach(module('bahmni.common.conceptSet'));
     beforeEach(module('bahmni.clinical'));
@@ -16,6 +16,7 @@ describe("OrderController", function () {
         var retrospectiveEntry = Bahmni.Common.Domain.RetrospectiveEntry.createFrom(Date.parse('2015-07-01'));
         var retrospectiveEntryService = jasmine.createSpyObj('retrospectiveEntryService', ['getRetrospectiveEntry']);
         retrospectiveEntryService.getRetrospectiveEntry.and.returnValue(retrospectiveEntry);
+        orderNotesService = jasmine.createSpyObj('orderNotesService', ['getReasonsToSelectConceptSet', 'getReasonConcepts']);
 
         appDescriptor = jasmine.createSpyObj('appDescriptor', ['getConfig']);
         var appServiceMock = jasmine.createSpyObj('appService', ['getAppDescriptor']);
@@ -43,7 +44,8 @@ describe("OrderController", function () {
             ngDialog: ngDialog,
             retrospectiveEntryService: retrospectiveEntryService,
             appService: appServiceMock,
-            $translate: translate
+            $translate: translate,
+            orderNotesService: orderNotesService
         });
     }));
 
@@ -210,8 +212,21 @@ describe("OrderController", function () {
     });
 
     it("should open notes popup", function () {
-        var order = {commentToFulfiller: "comment"}
-
+        var order = {commentToFulfiller: "comment"};
+        orderNotesService.getReasonsToSelectConceptSet.and.returnValue(specUtil.createFakePromise('concept set'));
+        var data = {
+            results: [
+                {
+                    answers: [{
+                        name:
+                            {
+                                name: 'first concept'
+                            }
+                    }]
+                }
+            ]
+        };
+        orderNotesService.getReasonConcepts.and.returnValue(specUtil.createFakePromise(data));
         scope.openNotesPopup(order);
 
         expect(scope.orderNoteText).toBe("comment");

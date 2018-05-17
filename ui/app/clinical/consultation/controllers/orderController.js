@@ -215,9 +215,10 @@ angular.module('bahmni.clinical')
                         $scope.reasons = [];
                         var results = result.data.results;
                         var concepts = results.length > 0 ? results[0].answers : [];
-                        concepts.sort().forEach(function (concept) {
+                        concepts.forEach(function (concept) {
                             $scope.reasons.push(concept.name.name);
                         });
+                        $scope.reasons.sort();
                         $scope.dialog = ngDialog.open({ template: 'consultation/views/orderNotes.html', className: 'selectedOrderNoteContainer-dialog ngdialog-theme-default', data: order, scope: $scope});
                     });
                 });

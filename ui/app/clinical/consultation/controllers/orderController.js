@@ -8,11 +8,9 @@ angular.module('bahmni.clinical')
             $scope.allOrdersTemplates = allOrderables;
             var RadiologyOrderOptionsConfig = appService.getAppDescriptor().getConfig("enableRadiologyOrderOptions");
             var LabOrderOptionsConfig = appService.getAppDescriptor().getConfig("enableLabOrderOptions");
-            var AddVisitTypeToComment = appService.getAppDescriptor().getConfig("addVisitTypeToComment");
             $scope.enableRadiologyOrderOptions = RadiologyOrderOptionsConfig ? RadiologyOrderOptionsConfig.value : null;
             $scope.enableLabOrderOptions = LabOrderOptionsConfig ? LabOrderOptionsConfig.value : null;
             $scope.labOrderOptionsConfig = LabOrderOptionsConfig ? LabOrderOptionsConfig.value : null;
-            $scope.addVisitTypeToComment = AddVisitTypeToComment ? AddVisitTypeToComment.value : null;
             var testConceptToParentsMapping = {}; // A child concept could be part of multiple parent panels
             $scope.reasons = [];
 
@@ -169,9 +167,6 @@ angular.module('bahmni.clinical')
 
             $scope.toggleOrderSelection = function (test) {
                 $scope.resetSearchString();
-                if ($scope.addVisitTypeToComment) {
-                    test.comment = $scope.activeVisit.visitType.display;
-                }
                 var orderPresent = $scope.isActiveOrderPresent(test);
                 if (!orderPresent) {
                     createOrder(test);
@@ -207,6 +202,7 @@ angular.module('bahmni.clinical')
             };
 
             $scope.openNotesPopup = function (order) {
+                order.commentToFulfiller = order.commentToFulfiller ? order.commentToFulfiller.replace(/\[\[.*\]\]\s*/, "") : "";
                 order.previousNote = order.commentToFulfiller;
                 $scope.orderNoteText = order.previousNote;
                 // $scope.orderNoteText = $scope.activeVisit.visitType.display;
@@ -256,7 +252,7 @@ angular.module('bahmni.clinical')
             };
 
             $scope.isNotesDisabled = function (order) {
-                return (order.uuid || $scope.addVisitTypeToComment);
+                return order.uuid;
             };
 
             $scope.isPriorityShow = function (isOrderSaved) {

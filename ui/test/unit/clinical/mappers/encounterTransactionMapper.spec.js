@@ -121,6 +121,34 @@ describe("EncounterTransactionMapper", function () {
             expect(encounterData.observations[0]).toBe(consultation.followUpConditions[0]);
             expect(encounterData.observations[1]).toBe(consultation.followUpConditions[1]);
         });
+
+        it("should add visit type to the comment", function () {
+            var obs = {uuid: "obsUuid"};
+            var defaultRetrospectiveVisitType = "IPD";
+            var order = [{ concept: {uuid: "orders-uuid"}}];
+            var consulation = { observations: obs, providers: [{uuid: "provider-uuid"}], locationUuid: "original-location-uuid", orders: order };
+            var patient = { uuid:"patientUuid"};
+            var patientProgramUuid = "someNiceUuid";
+
+            var encounterData = mapper.map(consulation, patient, "logged-in-location-uuid", {encounterDate : "2015-04-01"}, defaultRetrospectiveVisitType, null, false, patientProgramUuid);
+
+            expect(encounterData.context.patientProgramUuid).toBe(patientProgramUuid);
+            expect(encounterData.orders[0].commentToFulfiller).toBe("[[ IPD ]] ");
+        });
+
+        it("should append visit type to the existing comment", function () {
+            var obs = {uuid: "obsUuid"};
+            var defaultRetrospectiveVisitType = "IPD";
+            var order = [{ concept: {uuid: "orders-uuid"}, isUrgent: false, uuid: undefined, commentToFulfiller : "comment" }];
+            var consulation = { observations: obs, providers: [{uuid: "provider-uuid"}], locationUuid: "original-location-uuid", orders: order };
+            var patient = { uuid:"patientUuid"};
+            var patientProgramUuid = "someNiceUuid";
+
+            var encounterData = mapper.map(consulation, patient, "logged-in-location-uuid", {encounterDate : "2015-04-01"}, defaultRetrospectiveVisitType, null, false, patientProgramUuid);
+
+            expect(encounterData.context.patientProgramUuid).toBe(patientProgramUuid);
+            expect(encounterData.orders[0].commentToFulfiller).toBe("[[ IPD ]] comment");
+        });
     });
 });
 

@@ -236,6 +236,48 @@ describe("OrderController", function () {
         });
     });
 
+    it("should remove visit type from comments before opens notes popup", function () {
+        var order = {commentToFulfiller: "[[ IPD ]] comment"};
+        orderNotesService.getReasonsToSelectConceptSet.and.returnValue(specUtil.createFakePromise('concept set'));
+        var data = {
+            results: [
+                {
+                    answers: [{
+                        name:
+                            {
+                                name: 'first concept'
+                            }
+                    }]
+                }
+            ]
+        };
+        orderNotesService.getReasonConcepts.and.returnValue(specUtil.createFakePromise(data));
+        scope.openNotesPopup(order);
+
+        expect(scope.orderNoteText).toBe("comment");
+    });
+
+    it("should remove visit type from comments before opens notes popup", function () {
+        var order = {};
+        orderNotesService.getReasonsToSelectConceptSet.and.returnValue(specUtil.createFakePromise('concept set'));
+        var data = {
+            results: [
+                {
+                    answers: [{
+                        name:
+                            {
+                                name: 'first concept'
+                            }
+                    }]
+                }
+            ]
+        };
+        orderNotesService.getReasonConcepts.and.returnValue(specUtil.createFakePromise(data));
+        scope.openNotesPopup(order);
+
+        expect(scope.orderNoteText).toBe("");
+    });
+
     describe("appendPrintNotes",function (){
         it("should append needs print text in start of notes", function (){
             var order = {uuid: "uuid",previousNote:"comment" };

@@ -25,7 +25,7 @@
                                         <i class="fa fa-exclamation-triangle fa-orange show-after-active"></i>
                                     </button>
                                     <span>
-                                        <i ng-class="{'has-notes': order.commentToFulfiller }" class="fa fa-file-text-o" ng-click="openNotesPopup(order)"></i>
+                                        <i ng-class="{'has-notes': hasNotes(order.commentToFulfiller) }" class="fa fa-file-text-o" ng-click="openNotesPopup(order)"></i>
                                     </span>
                                     <span>
                                         <i ng-class="{'fa fa-remove': !order.isDiscontinued, 'fa fa-undo': order.isDiscontinued && !isOrderNotEditable(order) }" ng-click="handleOrderClick(order)"></i>

@@ -16,10 +16,12 @@ describe('Order', function () {
     });
 
     it("should create order", function () {
+        testWithShortName.visitType = "IPD";
         var order = Bahmni.Clinical.Order.create(testWithShortName);
         expect(order.concept.displayName).toBe('TestShortName');
         expect(order.concept.uuid).toBe('uuid');
         expect(order.uuid).toBe(undefined);
+        expect(order.visitType).toEqual("IPD");
     });
 
     it("should create a revised order", function () {

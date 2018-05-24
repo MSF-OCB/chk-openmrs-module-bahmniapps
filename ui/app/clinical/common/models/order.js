@@ -18,7 +18,7 @@ Bahmni.Clinical.Order = (function () {
                 uuid: test.uuid,
                 displayName: getName(test)
             },
-            commentToFulfiller: test.comment
+            visitType: test.visitType
         }
         );
         return order;

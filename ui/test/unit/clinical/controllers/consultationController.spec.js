@@ -4,7 +4,7 @@ describe("ConsultationController", function () {
     var scope, rootScope, state, contextChangeHandler, urlHelper, location, clinicalAppConfigService,
         stateParams, appService, ngDialog, q, appDescriptor, controller, visitConfig, _window_, clinicalDashboardConfig,
         sessionService, conditionsService, encounterService, configurations, diagnosisService, messagingService, spinnerMock,
-        auditLogService;
+        auditLogService, orderService;
 
     var encounterData = {
         "bahmniDiagnoses": [],
@@ -74,7 +74,7 @@ describe("ConsultationController", function () {
         "visitUuid": "fe429540-c977-49ad-8ed8-6c3e39fa706d",
         "visitTypeUuid": "c5fb299e-4dcf-41ee-a98c-210fe2d4d6d0",
         "locationName": "Subcenter 1 (BAM)",
-        "orders": [],
+        "orders": [{'commentToFulfiller' : "[[ IPD ]] comment" }, {'commentToFulfiller' : "comment with out visit type" }],
         "providers": [
             {
                 "uuid": "c19c914b-a9f0-4f2b-a148-20e72788d314",
@@ -140,7 +140,8 @@ describe("ConsultationController", function () {
             diagnosisService: diagnosisService,
             messagingService: messagingService,
             spinner: spinnerMock,
-            auditLogService: auditLogService
+            auditLogService: auditLogService,
+            orderService: orderService
         });
     };
     var setUpServiceMocks = function () {
@@ -245,6 +246,8 @@ describe("ConsultationController", function () {
             }
         };
         auditLogService = jasmine.createSpyObj('auditLogService', ['log']);
+        orderService  = jasmine.createSpyObj('orderService', ['updateOrdersComments']);
+        orderService.updateOrdersComments.and.returnValue([{ 'commentToFulfiller' : "comment" }, { 'commentToFulfiller' : "comment without visit type" }]);
         auditLogService.log.and.returnValue({});
     };
     beforeEach(module('bahmni.common.util'));
@@ -591,7 +594,7 @@ describe("ConsultationController", function () {
 
     describe("save", function () {
         it("should save encounter data", function (done) {
-            scope.consultation = {discontinuedDrugs: [{dateStopped: new Date()}], preSaveHandler: new Bahmni.Clinical.Notifier(), postSaveHandler: new Bahmni.Clinical.Notifier(), observations: [], conditions: [{condition: {}}]};
+            scope.consultation = {discontinuedDrugs: [{dateStopped: new Date()}], preSaveHandler: new Bahmni.Clinical.Notifier(), postSaveHandler: new Bahmni.Clinical.Notifier(), observations: [], conditions: [{condition: {}}], orders: [{'commentToFulfiller' : "[[ IPD ]] comment", 'concept': {} }, {'commentToFulfiller' : "comment without visit type", 'concept': {} }]};
             scope.patient = {
                 uuid: "patient-uuid"
             };
@@ -601,6 +604,8 @@ describe("ConsultationController", function () {
                 expect(auditLogService.log).toHaveBeenCalledWith(scope.patient.uuid, "EDIT_ENCOUNTER", {encounterUuid: encounterData.encounterUuid, encounterType: encounterData.encounterType}, "MODULE_LABEL_CLINICAL_KEY");
                 expect(conditionsService.save).toHaveBeenCalledWith(scope.consultation.conditions, "patient-uuid");
                 expect(messagingService.showMessage).toHaveBeenCalledWith('info', "{{'CLINICAL_SAVE_SUCCESS_MESSAGE_KEY' | translate}}");
+                expect(scope.$parent.consultation.orders[0].commentToFulfiller).toEqual("comment");
+                expect(scope.$parent.consultation.orders[1].commentToFulfiller).toEqual("comment without visit type");
                 done();
             });
         });

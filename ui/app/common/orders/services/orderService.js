@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bahmni.common.orders')
-    .factory('orderService', ['$http', function ($http) {
+    .factory('orderService', ['$http', '$q', function ($http, $q) {
         var getOrders = function (data) {
             var params = {
                 concept: data.conceptNames,
@@ -29,10 +29,20 @@ angular.module('bahmni.common.orders')
             return $http.get(Bahmni.Common.Constants.bahmniOrderUrl, {
                 params: params,
                 withCredentials: true
+            }).then(function (res) {
+                return $q.when({data: updateOrdersComments(res.data)});
             });
         };
 
+        var updateOrdersComments = function (orders) {
+            _.forEach(orders, function (order) {
+                order.visitType = _.words(order.commentToFulfiller, /\[\[.*\]\]\s*/)[0];
+                order.commentToFulfiller = _.replace(order.commentToFulfiller, /\[\[.*\]\]\s*/, "");
+            });
+            return orders;
+        };
         return {
-            getOrders: getOrders
+            getOrders: getOrders,
+            updateOrdersComments: updateOrdersComments
         };
     }]);

@@ -1,16 +1,17 @@
 'use strict';
 
 describe('Order Service', function () {
-    var orderService;
+    var orderService, q;
     var mockHttp = jasmine.createSpyObj('$http', ['get']);
     mockHttp.get.and.callFake(function(param) {
-        return specUtil.respondWith("success");
+        return specUtil.respondWithPromise(Q, { data: [{ commentToFulfiller: "[[ IPD ]] comment" }] });
     });
 
     beforeEach(function () {
         module('bahmni.common.orders');
         module(function ($provide) {
             $provide.value('$http', mockHttp);
+            $provide.value('$q', Q);
         });
 
         inject(['orderService', function (orderServiceInjected) {
@@ -28,7 +29,8 @@ describe('Order Service', function () {
         };
 
         orderService.getOrders(params).then(function(response) {
-            expect(response).toEqual("success");
+            expect(response.data[0].commentToFulfiller).toEqual("comment");
+            expect(response.data[0].visitType).toEqual("[[ IPD ]] ");
             done();
         });
         expect(mockHttp.get).toHaveBeenCalled();
@@ -53,7 +55,8 @@ describe('Order Service', function () {
         };
 
         orderService.getOrders(params).then(function(response) {
-            expect(response).toEqual("success");
+            expect(response.data[0].commentToFulfiller).toEqual("comment");
+            expect(response.data[0].visitType).toEqual("[[ IPD ]] ");
             done();
         });
         expect(mockHttp.get).toHaveBeenCalled();
@@ -80,7 +83,8 @@ describe('Order Service', function () {
         };
 
         orderService.getOrders(params).then(function(response) {
-            expect(response).toEqual("success");
+            expect(response.data[0].commentToFulfiller).toEqual("comment");
+            expect(response.data[0].visitType).toEqual("[[ IPD ]] ");
             done();
         });
         expect(mockHttp.get).toHaveBeenCalled();
@@ -142,4 +146,17 @@ describe('Order Service', function () {
             locationUuids:["uuid1", "uuid2", "uuid3"]
         });
     });
+
+    describe("updateOrdersComments", function () {
+        it("should remove visit type from comments and add as separate fields if visit type exist", function () {
+            var orders = [{ commentToFulfiller: "[[ IPD ]] comment1" }, { commentToFulfiller: "comment2" }];
+
+            var updateOrdersComments = orderService.updateOrdersComments(orders);
+
+            expect(updateOrdersComments[0].commentToFulfiller).toEqual("comment1");
+            expect(updateOrdersComments[0].visitType).toEqual("[[ IPD ]] ");
+            expect(updateOrdersComments[1].commentToFulfiller).toEqual("comment2");
+            expect(updateOrdersComments[1].visitType).toEqual(undefined);
+        });
+    })
 });

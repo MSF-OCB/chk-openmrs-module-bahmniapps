@@ -122,10 +122,10 @@ describe("EncounterTransactionMapper", function () {
             expect(encounterData.observations[1]).toBe(consultation.followUpConditions[1]);
         });
 
-        it("should add visit type to the comment", function () {
+        it("should add visit type to the comment", function() {
             var obs = {uuid: "obsUuid"};
             var defaultRetrospectiveVisitType = "IPD";
-            var order = [{ concept: {uuid: "orders-uuid"}}];
+            var order = [{ concept: {uuid: "orders-uuid"}, isUrgent: true, uuid: undefined, commentToFulfiller: "comment", visitType: "[[ OPD ]]" }];
             var consulation = { observations: obs, providers: [{uuid: "provider-uuid"}], locationUuid: "original-location-uuid", orders: order };
             var patient = { uuid:"patientUuid"};
             var patientProgramUuid = "someNiceUuid";
@@ -133,13 +133,14 @@ describe("EncounterTransactionMapper", function () {
             var encounterData = mapper.map(consulation, patient, "logged-in-location-uuid", {encounterDate : "2015-04-01"}, defaultRetrospectiveVisitType, null, false, patientProgramUuid);
 
             expect(encounterData.context.patientProgramUuid).toBe(patientProgramUuid);
-            expect(encounterData.orders[0].commentToFulfiller).toBe("[[ IPD ]] ");
+            expect(encounterData.orders[0].urgency).toBe("STAT");
+            expect(encounterData.orders[0].commentToFulfiller).toBe("[[ OPD ]] comment");
         });
 
-        it("should append visit type to the existing comment", function () {
+        it("should have only visit type as a comment when comment is empty", function() {
             var obs = {uuid: "obsUuid"};
             var defaultRetrospectiveVisitType = "IPD";
-            var order = [{ concept: {uuid: "orders-uuid"}, isUrgent: false, uuid: undefined, commentToFulfiller : "comment" }];
+            var order = [{ concept: {uuid: "orders-uuid"}, isUrgent: true, uuid: undefined, commentToFulfiller: "", visitType: "[[ OPD ]]" }];
             var consulation = { observations: obs, providers: [{uuid: "provider-uuid"}], locationUuid: "original-location-uuid", orders: order };
             var patient = { uuid:"patientUuid"};
             var patientProgramUuid = "someNiceUuid";
@@ -147,7 +148,8 @@ describe("EncounterTransactionMapper", function () {
             var encounterData = mapper.map(consulation, patient, "logged-in-location-uuid", {encounterDate : "2015-04-01"}, defaultRetrospectiveVisitType, null, false, patientProgramUuid);
 
             expect(encounterData.context.patientProgramUuid).toBe(patientProgramUuid);
-            expect(encounterData.orders[0].commentToFulfiller).toBe("[[ IPD ]] comment");
+            expect(encounterData.orders[0].urgency).toBe("STAT");
+            expect(encounterData.orders[0].commentToFulfiller).toBe("[[ OPD ]] ");
         });
     });
 });

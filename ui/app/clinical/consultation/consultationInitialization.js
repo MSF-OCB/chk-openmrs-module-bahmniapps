@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('bahmni.clinical').factory('consultationInitialization',
-    ['$q', 'diagnosisService', '$rootScope', 'encounterService', 'sessionService', 'configurations', '$bahmniCookieStore', 'retrospectiveEntryService', 'conditionsService',
-        function ($q, diagnosisService, $rootScope, encounterService, sessionService, configurations, $bahmniCookieStore, retrospectiveEntryService, conditionsService) {
+    ['$q', 'diagnosisService', '$rootScope', 'encounterService', 'sessionService', 'configurations', '$bahmniCookieStore',
+        'retrospectiveEntryService', 'conditionsService', 'orderService',
+        function ($q, diagnosisService, $rootScope, encounterService, sessionService, configurations, $bahmniCookieStore, retrospectiveEntryService, conditionsService, orderService) {
             return function (patientUuid, encounterUuid, programUuid, enrollment, followUpConditionConcept) {
                 if (encounterUuid === 'active') {
                     encounterUuid = undefined;
@@ -46,7 +47,9 @@ angular.module('bahmni.clinical').factory('consultationInitialization',
                             patientProgramUuid: enrollment,
                             locationUuid: $bahmniCookieStore.get(Bahmni.Common.Constants.locationCookieName).uuid
                         }).then(function (encounterTransactionResponse) {
-                            return consultationMapper.map(encounterTransactionResponse.data);
+                            var consultation = consultationMapper.map(encounterTransactionResponse.data);
+                            consultation.orders = orderService.updateOrdersComments(consultation.orders);
+                            return consultation;
                         });
                     });
                 };

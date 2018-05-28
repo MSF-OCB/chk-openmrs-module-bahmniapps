@@ -236,48 +236,6 @@ describe("OrderController", function () {
         });
     });
 
-    it("should remove visit type from comments before opens notes popup", function () {
-        var order = {commentToFulfiller: "[[ IPD ]] comment"};
-        orderNotesService.getReasonsToSelectConceptSet.and.returnValue(specUtil.createFakePromise('concept set'));
-        var data = {
-            results: [
-                {
-                    answers: [{
-                        name:
-                            {
-                                name: 'first concept'
-                            }
-                    }]
-                }
-            ]
-        };
-        orderNotesService.getReasonConcepts.and.returnValue(specUtil.createFakePromise(data));
-        scope.openNotesPopup(order);
-
-        expect(scope.orderNoteText).toBe("comment");
-    });
-
-    it("should remove visit type from comments before opens notes popup", function () {
-        var order = {};
-        orderNotesService.getReasonsToSelectConceptSet.and.returnValue(specUtil.createFakePromise('concept set'));
-        var data = {
-            results: [
-                {
-                    answers: [{
-                        name:
-                            {
-                                name: 'first concept'
-                            }
-                    }]
-                }
-            ]
-        };
-        orderNotesService.getReasonConcepts.and.returnValue(specUtil.createFakePromise(data));
-        scope.openNotesPopup(order);
-
-        expect(scope.orderNoteText).toBe("");
-    });
-
     describe("appendPrintNotes",function (){
         it("should append needs print text in start of notes", function (){
             var order = {uuid: "uuid",previousNote:"comment" };
@@ -393,12 +351,18 @@ describe("OrderController", function () {
     describe("toggleOrderSelection", function() {
         it("should add an order if it is not present", function() {
             var someTest = allOrderables["\'Lab Samples\'"].setMembers[0].setMembers[0];
+            scope.activeVisit = {
+                visitType: {
+                    display: "IPD"
+                }
+            };
             scope.toggleOrderSelection(someTest);
 
             var addedOrder = _.find(scope.consultation.orders, function(testOrder){
                 return testOrder.concept.uuid == someTest.uuid;
             });
             expect(addedOrder).not.toBeUndefined();
+            expect(addedOrder.visitType).toEqual("[[ IPD ]]");
         });
 
         it("should remove an order if it is present", function() {
@@ -416,6 +380,11 @@ describe("OrderController", function () {
             var childTest = parentTest.setMembers[0];
             var childOrder = Bahmni.Clinical.Order.create(childTest);
             scope.consultation.orders.push(childOrder);
+            scope.activeVisit = {
+                visitType: {
+                    display: "IPD"
+                }
+            };
 
             scope.toggleOrderSelection(parentTest);
 
@@ -452,6 +421,16 @@ describe("OrderController", function () {
             scope.resetSearchString();
             expect(scope.search.string).toBe('');
         });
+    });
+
+    describe("hasNotes", function () {
+       it("should return false when notes is empty", function () {
+          expect(scope.hasNotes("")).toBeFalsy();
+       });
+
+       it("should return true when notes is there", function () {
+          expect(scope.hasNotes("notes")).toBeTruthy();
+       });
     });
 
 

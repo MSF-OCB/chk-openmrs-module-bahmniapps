@@ -64,6 +64,7 @@ angular.module('bahmni.clinical')
                 if (discontinuedOrder) {
                     discontinuedOrder.isDiscontinued = false;
                 } else {
+                    test.visitType = "[[ " + $scope.activeVisit.visitType.display + " ]]";
                     var createdOrder = Bahmni.Clinical.Order.create(test);
                     $scope.consultation.orders.push(createdOrder);
                 }
@@ -202,7 +203,6 @@ angular.module('bahmni.clinical')
             };
 
             $scope.openNotesPopup = function (order) {
-                order.commentToFulfiller = order.commentToFulfiller ? order.commentToFulfiller.replace(/\[\[.*\]\]\s*/, "") : "";
                 order.previousNote = order.commentToFulfiller;
                 $scope.orderNoteText = order.previousNote;
                 // $scope.orderNoteText = $scope.activeVisit.visitType.display;
@@ -296,6 +296,10 @@ angular.module('bahmni.clinical')
             $scope.getName = function (sample) {
                 var name = _.find(sample.names, {conceptNameType: "SHORT"}) || _.find(sample.names, {conceptNameType: "FULLY_SPECIFIED"});
                 return name && name.name;
+            };
+
+            $scope.hasNotes = function (notes) {
+                return !_.isEmpty(notes);
             };
 
             init();

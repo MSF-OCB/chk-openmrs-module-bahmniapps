@@ -91,12 +91,12 @@
     "PRIVILEGE_REQUIRED": "L'utilisateur est connecté mais n'a pas le privilège pertinent",
     "NO_FULFILMENT_MESSAGE": "Aucune observation capturée pour cette commande.",
     "PROGRAM_MANAGEMENT_SELECT_PROGRAM_KEY":"Enrollement  à un nouveau programme",
-    "PROGRAM_MANAGEMENT_CHOOSE_PROGRAM_KEY":"choisir le programme",
+    "PROGRAM_MANAGEMENT_CHOOSE_PROGRAM_KEY":"Choisir un programme",
     "PROGRAM_MANAGEMENT_START_DATE_KEY":"Date de début",
     "PROGRAM_MANAGEMENT_ENROLL_KEY": "Enroller",
-    "PROGRAM_MANAGEMENT_ACTIVE_PROGRAM_KEY":"Programmes actif",
+    "PROGRAM_MANAGEMENT_ACTIVE_PROGRAM_KEY":"Programmes actifs",
     "PATIENT_NOT_ENROLLED_TO_PROGRAMS_MESSAGE_KEY":"Le patient n'a pas inscrit à tous les programmes",
-    "PROGRAM_MANAGEMENT_PAST_PROGRAM_KEY":"Programmes passées",
+    "PROGRAM_MANAGEMENT_PAST_PROGRAM_KEY":"Programmes passés",
     "PATIENT_DOESNT_HAVE_PREVIOUS_PROGRAMS_MESSAGE_KEY":"Le patient n'a pas de précédents programmes",
     "PROGRAM_MANAGEMENT_GENERAL_CONSULTATION_KEY":"Consultation générale",
     "PROGRAM_MANAGEMENT_ALREADY_ENROLLED_PROGRAM_MESSAGE_KEY": "Le patient est déjà enrollé dans le programme",
@@ -126,6 +126,8 @@
     "CONFLICTING_DRUG_ORDER": "Est en conflit avec la prescription que vous essayez d'ajouter. Veuillez la reviser ou la renouveller",
     "INCOMPLETE_FORM_ERROR_MESSAGE": "Veuillez cliquer sur ajouter ou effacer pour continuer",
     "NO_FORM_MESSAGE": "Aucun formulaire attaché à ce patient",
-    "MEDICATION_TAB_DOSE": "Dose"
+    "MEDICATION_TAB_DOSE": "Dose",
+    "EMPTY_TEMPLATE_MESSAGE": "Cliquer sur 'Ajouter",
+    "PROGRAM_MANAGEMENT_LABEL_PROGRAM_STATE": "Phase du programme"
 
 }

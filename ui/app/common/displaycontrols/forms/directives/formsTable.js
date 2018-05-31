@@ -35,7 +35,7 @@ angular.module('bahmni.common.displaycontrol.forms')
                 };
 
                 var init = function () {
-                    $scope.noFormFoundMessage = "{{'NO_FORM_MESSAGE' | translate}}";
+                    $scope.noFormFoundMessage = "No Form found for this patient";
                     $scope.isFormFound = false;
                     return $q.all([getAllObservationTemplates(), obsFormData()]).then(function (results) {
                         $scope.observationTemplates = results[0].data.results[0].setMembers;

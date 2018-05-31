@@ -332,6 +332,11 @@
     "ADT_IPD_PATIENT_ADMIT_KEY": "Admit Patient",
     "ADT_IPD_PATIENT_DISCHARGE_KEY": "Discharge Patient",
     "ADT_IPD_PATIENT_UNDO_DISCHARGE_KEY" :"Undo Discharge",
-    "ADT_IPD_PATIENT_ADMIT_BUTTON_KEY" :"Admit"
+    "ADT_IPD_PATIENT_ADMIT_BUTTON_KEY" :"Admit",
+    "SECTION_ADDED_MESSAGE": "section has been added",
+    "DASHBOARD_IPD_MESSAGE": "Go to IPD dashboard",
+    "DELETE_CONFIRM": "Are you sure, you want to delete ",
+    "CONFLICTING_DRUG_ORDER": "is conflicting with drug order you are trying to add. You can revise or refill instead.",
+    "NO_FORM_MESSAGE": "No Form found for this patient"
 
 }

@@ -2,7 +2,7 @@
 
 angular.module('bahmni.common.displaycontrol.forms')
     .directive('formsTable', ['conceptSetService', 'spinner', '$q', 'visitFormService', 'appService', '$state', '$translate',
-        function (conceptSetService, spinner, $q, visitFormService, appService, $state ,$translate) {
+        function (conceptSetService, spinner, $q, visitFormService, appService, $state, $translate) {
             var controller = function ($scope) {
                 $scope.shouldPromptBrowserReload = true;
                 $scope.showFormsDate = appService.getAppDescriptor().getConfigValue("showFormsDate");

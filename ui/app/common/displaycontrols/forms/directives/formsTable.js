@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('bahmni.common.displaycontrol.forms')
-    .directive('formsTable', ['conceptSetService', 'spinner', '$q', 'visitFormService', 'appService', '$state',
-        function (conceptSetService, spinner, $q, visitFormService, appService, $state) {
+    .directive('formsTable', ['conceptSetService', 'spinner', '$q', 'visitFormService', 'appService', '$state', '$translate',
+        function (conceptSetService, spinner, $q, visitFormService, appService, $state ,$translate) {
             var controller = function ($scope) {
                 $scope.shouldPromptBrowserReload = true;
                 $scope.showFormsDate = appService.getAppDescriptor().getConfigValue("showFormsDate");
@@ -35,7 +35,7 @@ angular.module('bahmni.common.displaycontrol.forms')
                 };
 
                 var init = function () {
-                    $scope.noFormFoundMessage = "No Form found for this patient";
+                    $scope.noFormFoundMessage = $translate.instant("NO_FORM_MESSAGE");
                     $scope.isFormFound = false;
                     return $q.all([getAllObservationTemplates(), obsFormData()]).then(function (results) {
                         $scope.observationTemplates = results[0].data.results[0].setMembers;

@@ -337,6 +337,7 @@
     "DASHBOARD_IPD_MESSAGE": "Go to IPD dashboard",
     "DELETE_CONFIRM": "Are you sure, you want to delete ",
     "CONFLICTING_DRUG_ORDER": "is conflicting with drug order you are trying to add. You can revise or refill instead.",
-    "NO_FORM_MESSAGE": "No Form found for this patient"
+    "NO_FORM_MESSAGE": "No Form found for this patient",
+    "GO_CLINICAL_DASHBOARD_KEY": "Go to Clinical dashboard"
 
 }

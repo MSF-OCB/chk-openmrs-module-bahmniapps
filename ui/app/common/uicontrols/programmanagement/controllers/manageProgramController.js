@@ -2,9 +2,9 @@
 
 angular.module('bahmni.common.uicontrols.programmanagment')
     .controller('ManageProgramController', ['$scope', 'retrospectiveEntryService', '$window', 'programService',
-        'spinner', 'messagingService', '$stateParams', '$q', 'confirmBox',
+        'spinner', 'messagingService', '$stateParams', '$q', 'confirmBox', '$translate',
         function ($scope, retrospectiveEntryService, $window, programService,
-                  spinner, messagingService, $stateParams, $q, confirmBox) {
+                  spinner, messagingService, $stateParams, $q, confirmBox, $translate) {
             var DateUtil = Bahmni.Common.Util.DateUtil;
             $scope.programSelected = {};
             $scope.workflowStateSelected = {};
@@ -213,7 +213,7 @@ angular.module('bahmni.common.uicontrols.programmanagment')
                 scope.delete = _.partial(voidPatientProgram, patientProgram, _);
                 confirmBox({
                     scope: scope,
-                    actions: [{name: 'cancel', display: 'cancel'}, {name: 'delete', display: 'delete'}],
+                    actions: [{name: 'cancel', display: $translate.instant("CANCEL_LABEL")}, {name: 'delete', display: $translate.instant("DELETE_LABEL")}],
                     className: "ngdialog-theme-default delete-program-popup"
                 });
             };

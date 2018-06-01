@@ -36,7 +36,7 @@
   "NO_DIAGNOSIS_MESSAGE":"Aucun diagnostic pour ce patient",
   "NO_DISPOSTIONS_AVAILABLE_MESSAGE_KEY":"Pas de dispositions disponibles .",
   "NO_DOCUMENTS_MESSAGE":"Aucun document pour ce patient",
-  "NO_ADMISSION_DETAILS_MESSAGE":"Aucune information d'hospitalisation disponible",
+  "NO_ADMISSION_DETAILS_MESSAGE":"Pas des détails d'admission disponible",
   "NO_TREATMENTS_MESSAGE":"Aucun traitement pour ce patient",
   "DISPLAY_CONTROL_ERROR_MESSAGE_KEY":"Aucun {{displayControl}} ce patient",
   "NO_LAB_ORDERS_FOR_PATIENT_MESSAGE_KEY":"Aucune demande de laboratoire pour ce patient",
@@ -119,7 +119,6 @@
     "NO_DATA_MESSAGE": "Aucune donnée capturée",
     "NO_OBS_FOUND_MESSAGE": "Aucune observation pour ce patient",
     "SECTION_ADDED_MESSAGE": "La section a été ajouté",
-    "EMPTY_TEMPLATE_MESSAGE": "Cliquer sur 'Ajouter",
     "DASHBOARD_IPD_MESSAGE": "Aller au tableau de bord hospi",
     "DELETE_CONFIRM": "Etes-vous sûr de vouloir effacer ces détails ",
     "DASHBOARD_PROGRAM_MESSAGE": "Tableau de bord -",
@@ -128,6 +127,9 @@
     "NO_FORM_MESSAGE": "Aucun formulaire attaché à ce patient",
     "MEDICATION_TAB_DOSE": "Dose",
     "EMPTY_TEMPLATE_MESSAGE": "Cliquer sur 'Ajouter",
-    "PROGRAM_MANAGEMENT_LABEL_PROGRAM_STATE": "Phase du programme"
+    "PROGRAM_MANAGEMENT_LABEL_PROGRAM_STATE": "Phase du programme",
+    "GO_CLINICAL_DASHBOARD_KEY": "Aller au tableau de bord clinique",
+    "CANCEL_LABEL": "Annuler",
+    "DELETE_LABEL": "Effacer"
 
 }

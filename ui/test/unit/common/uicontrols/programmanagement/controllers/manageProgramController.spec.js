@@ -4,14 +4,15 @@ describe("ManageProgramController", function () {
 
     var scope, messageService, i = 0, programService, _provide, deferred, q, _spinner,
         retrospectiveEntryService, listOfPatientPrograms, programAttributeTypes, allPrograms,
-        controller, rootScope, confirmBox;
+        controller, rootScope, confirmBox, translate;
 
     var setUp = function () {
         return controller('ManageProgramController', {
             $scope: scope,
             $rootScope: rootScope,
             q: q,
-            confirmBox: confirmBox
+            confirmBox: confirmBox,
+            $translate: translate
         });
     };
 
@@ -57,6 +58,8 @@ describe("ManageProgramController", function () {
         _spinner = jasmine.createSpyObj('spinner', ['forPromise']);
         messageService = jasmine.createSpyObj('messageService', ['showMessage']);
         retrospectiveEntryService = jasmine.createSpyObj('retrospectiveEntryService', ['getRetrospectiveDate']);
+        translate = jasmine.createSpyObj('$translate', ['instant']);
+        translate.instant.and.returnValue("Delete");
 
         $provide.value('programService', programService);
         $provide.value('spinner', _spinner);

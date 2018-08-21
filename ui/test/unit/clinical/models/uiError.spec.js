@@ -5,7 +5,7 @@ describe("UiErrorSpec", function () {
     var uiErrorSpec = Bahmni.Clinical.Error;
 
     it("maps error messages from the source error object", function () {
-        var expectedErrorMessage = "One or more drugs you are trying to order are already active. Please change the start date of the conflicting drug or remove them from the new prescription.";
+        var expectedErrorMessage = "CANNOT_HAVE_MORE_THAN_ONE_ACTIVE_ORDER";
         var error = {data: {
             error: {
                 message: "Cannot have more than one active order for the same orderable and care setting at same time"
